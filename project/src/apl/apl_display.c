@@ -12,6 +12,7 @@
 #include "drv_sw.h"
 #include "drv_tft.h"
 #include "apl_clock.h"
+#include "apl_controller.h"
 #include "apl_display.h"
 
 /********** Define **********/
@@ -150,6 +151,7 @@ void processDisplayId(void)
         DrawCenterClock();
         break;
     case DISPLAY_ID_CONTROLLER:
+        DrawControllerSw();
         break;
     default:
         /* 処理なし */

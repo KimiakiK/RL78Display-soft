@@ -22,6 +22,8 @@ typedef enum image_id_enum {
     IMAGE_ID_BACKGROUND_CONTROLLER,
     IMAGE_ID_FONT_30PX,
     IMAGE_ID_FONT_50PX,
+    IMAGE_ID_SW_OFF,
+    IMAGE_ID_SW_ON,
     IMAGE_ID_NUM
 } image_id_t;
 
@@ -33,9 +35,19 @@ typedef struct image_struct {
     uint16_t heigth;
 } image_t;
 
+typedef struct sprite_struct {
+    uint32_t address;
+    uint8_t x;
+    uint8_t y;
+    uint8_t w;
+    uint8_t h;
+} sprite_t;
+
 /********** Constant **********/
 
 extern const image_t image[IMAGE_ID_NUM];
+extern const sprite_t sw_off_sprite[8];
+extern const sprite_t sw_on_sprite[8];
 
 /********** Variable **********/
 
