@@ -65,7 +65,7 @@ void InitPort(void)
     P13 = 0x00;
 
     P14 = 0x00;
-    PM14 = 0x3D;
+    PM14 = 0x3C;
 }
 
 /*

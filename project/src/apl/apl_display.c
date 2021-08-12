@@ -9,6 +9,8 @@
 
 #include "typedef.h"
 #include "lib_graphic.h"
+#include "mcal_port.h"
+#include "mcal_pclbuz.h"
 #include "drv_sw.h"
 #include "drv_tft.h"
 #include "drv_rtc.h"
@@ -157,7 +159,25 @@ void processDisplayId(void)
 {
     switch (display_id) {
     case DISPLAY_ID_TITLE:
+        /* 画面右上の時計表示 */
         DrawMiniClock();
+        
+        /* SW操作でブザーとLED制御 */
+        if (GetSw(SW_ID_A) == SW_PUSH) {
+            PlayBuzzer(FREQUENCY_ID_512HZ);
+        } else if (GetSw(SW_ID_A) == SW_RELEASE) {
+            StopBuzzer();
+        } else {
+            /* 処理なし */
+        }
+        if (GetSw(SW_ID_B) == SW_PUSH) {
+            WritePin(PIN_ID_LED, LEVEL_LOW);
+        } else if (GetSw(SW_ID_B) == SW_RELEASE) {
+            WritePin(PIN_ID_LED, LEVEL_HIGH);
+        } else {
+            /* 処理なし */
+        }
+
         break;
     case DISPLAY_ID_CLOCK:
         DrawCenterClock();
