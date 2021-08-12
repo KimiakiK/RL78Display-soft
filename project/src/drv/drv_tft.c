@@ -11,6 +11,7 @@
 #include "mcal_port.h"
 #include "mcal_spi.h"
 #include "mcal_timer.h"
+#include "drv_light.h"
 #include "drv_tft.h"
 
 /********** Define **********/
@@ -42,8 +43,6 @@ const static uint8_t command_CASET[] = {0x2A};          /* CASET (2Ah): Column A
 const static uint8_t command_RASET[] = {0x2B};          /* RASET (2Bh): Row Address Set */
 const static uint8_t command_RAMWR[] = {0x2C};          /* RAMWR (2Ch): Memory Write */
 
-
-
 /********** Variable **********/
 
 static uint8_t data_area[4];
@@ -65,13 +64,13 @@ void setArea(uint8_t x, uint8_t y, uint8_t w, uint8_t h);
 void InitTft(void)
 {
     /* ハードウェアリセット */
-    WritePin(PIN_TFT_RESET, PIN_RESET_ON);
+    WritePin(PIN_ID_TFT_RESET, PIN_RESET_ON);
     WaitMs(1);
-    WritePin(PIN_TFT_RESET, PIN_RESET_OFF);
+    WritePin(PIN_ID_TFT_RESET, PIN_RESET_OFF);
     WaitMs(120);
 
     /* 初期設定 */
-    WritePin(PIN_TFT_CS, PIN_CS_ON);
+    WritePin(PIN_ID_TFT_CS, PIN_CS_ON);
     sendCommand((uint32_t)((uint8_t __far *)command_SLPOUT), sizeof(command_SLPOUT));
     WaitMs(5);
     sendCommand((uint32_t)((uint8_t __far *)command_COLMOD), sizeof(command_COLMOD));
@@ -81,14 +80,6 @@ void InitTft(void)
     // sendCommand((uint32_t)((uint8_t __far *)command_INVOFF), sizeof(command_INVOFF));
     sendCommand((uint32_t)((uint8_t __far *)command_INVON), sizeof(command_INVON));
     sendCommand((uint32_t)((uint8_t __far *)command_NORON), sizeof(command_NORON));
-
-    setArea(0, 0, 240, 240);
-    sendCommand((uint32_t)((uint8_t __far *)command_RAMWR), sizeof(command_RAMWR));
-    sendData(0x40000, (uint32_t)240 * 240 * 2);
-
-    /* 表示開始 */
-    sendCommand((uint32_t)((uint8_t __far *)command_DISPON), sizeof(command_DISPON));
-    SetDuty(5000);
 }
 
 void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data)
@@ -96,6 +87,19 @@ void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data)
     setArea(x, y, w, h);
     sendCommand((uint32_t)((uint8_t __far *)command_RAMWR), sizeof(command_RAMWR));
     sendData(data, (uint32_t)w * h * 2);
+}
+
+void TftOn(void)
+{
+    /* 表示開始 */
+    sendCommand((uint32_t)((uint8_t __far *)command_DISPON), sizeof(command_DISPON));
+    LightOn();
+}
+
+void TftOff(void)
+{
+    /* 表示終了 */
+    LightOff();
 }
 
 /*
@@ -106,7 +110,7 @@ void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data)
  */
 void sendCommand(uint32_t data_address, uint32_t length)
 {
-    WritePin(PIN_TFT_DC, PIN_DC_COMMAND);
+    WritePin(PIN_ID_TFT_DC, PIN_DC_COMMAND);
     SendSyncSpi(data_address, length);
 }
 
@@ -118,7 +122,7 @@ void sendCommand(uint32_t data_address, uint32_t length)
  */
 void sendData(uint32_t data_address, uint32_t length)
 {
-    WritePin(PIN_TFT_DC, PIN_DC_DATA);
+    WritePin(PIN_ID_TFT_DC, PIN_DC_DATA);
     SendSyncSpi(data_address, length);
 }
 

@@ -9,12 +9,15 @@
 
 #include "typedef.h"
 #include "mcal_port.h"
+#include "mcal_adc.h"
 #include "mcal_timer.h"
 #include "mcal_spi.h"
 #include "mcal_iic.h"
+#include "drv_sw.h"
 #include "drv_tft.h"
 #include "drv_rtc.h"
-#include "apl_clock.h"
+#include "drv_light.h"
+#include "apl_display.h"
 
 /********** Define **********/
 
@@ -40,9 +43,12 @@ void main(void)
 {
     /* 初期化 */
     InitPort();
+    InitAdc();
     InitTimer();
     InitSpi();
     InitIic();
+    InitSw();
+    InitLight();
 
     /* 割り込み許可 */
     __EI();
@@ -50,15 +56,16 @@ void main(void)
     InitTft();
     InitRtc();
 
-    InitClock();
+    InitDisplay();
 
-    Start1msTimer();
+    Start10msTimer();
 
     /* メインループ */
     while (1) {
-        MainClock();
+        MainSw();
+        MainDisplay();
 
-        while (Get1msTimerState() == 0) { }
-        Clear1msTimerState();
+        while (Get10msTimerState() == 0) { }
+        Clear10msTimerState();
     }
 }

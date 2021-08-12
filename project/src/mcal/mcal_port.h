@@ -14,16 +14,24 @@
 
 /********** Define **********/
 
-/* 出力レベル */
+/* 入出力レベル */
 #define LEVEL_LOW   (0)
 #define LEVEL_HIGH  (1)
 
-/* ピン */
-#define PIN_TFT_DC      (0)
-#define PIN_TFT_CS      (1)
-#define PIN_TFT_RESET   (2)
-
 /********** Enum **********/
+
+typedef enum pin_id_enum {
+    PIN_ID_TFT_DC = 0,
+    PIN_ID_TFT_CS,
+    PIN_ID_TFT_RESET,
+    PIN_ID_LED,
+    PIN_ID_SW_L,
+    PIN_ID_SW_R,
+    PIN_ID_SW_A,
+    PIN_ID_SW_B,
+    PIN_ID_SW_C,
+    PIN_ID_SW_D
+} pin_id_t;
 
 /********** Type **********/
 
@@ -34,6 +42,7 @@
 /********** Function Prototype **********/
 
 void InitPort(void);
-void WritePin(uint8_t pin, uint8_t level);
+void WritePin(pin_id_t pin, uint8_t level);
+uint8_t ReadPin(pin_id_t pin);
 
 #endif /* MCAL_PORT_H_ */

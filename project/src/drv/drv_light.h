@@ -1,12 +1,12 @@
 /*
- * File: apl_clock.h
- * Brief: 時計表示アプリ
+ * File: drv_light.h
+ * Brief: 照明ドライバ
  * Author: KimiakiK
- * Date: 2021/07/04
+ * Date: 2021/08/01
  */
 
-#ifndef APL_CLOCK_H_
-#define APL_CLOCK_H_
+#ifndef DRV_LIGHT_H_
+#define DRV_LIGHT_H_
 
 /********** Include **********/
 
@@ -24,8 +24,8 @@
 
 /********** Function Prototype **********/
 
-void InitClock(void);
-void DrawMiniClock(void);
-void DrawCenterClock(void);
+void InitLight(void);
+void LightOn(void);
+void LightOff(void);
 
-#endif /* APL_CLOCK_H_ */
+#endif /* DRV_LIGHT_H_ */

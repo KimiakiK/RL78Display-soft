@@ -14,6 +14,9 @@
 
 /********** Define **********/
 
+#define TFT_WIDTH   (240)
+#define TFT_HEIGHT  (240)
+
 /********** Enum **********/
 
 /********** Type **********/
@@ -26,5 +29,7 @@
 
 void InitTft(void);
 void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data);
+void TftOn(void);
+void TftOff(void);
 
 #endif /* DRV_TFT_H_ */

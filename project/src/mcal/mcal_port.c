@@ -74,20 +74,60 @@ void InitPort(void)
  * Return: 
  * Note: 
  */
-void WritePin(uint8_t pin, uint8_t level)
+void WritePin(pin_id_t pin, uint8_t level)
 {
     switch (pin) {
-    case PIN_TFT_DC:
+    case PIN_ID_TFT_DC:
         P1_bit.no4 = level;
         break;
-    case PIN_TFT_CS:
+    case PIN_ID_TFT_CS:
         P1_bit.no3 = level;
         break;
-    case PIN_TFT_RESET:
+    case PIN_ID_TFT_RESET:
         P1_bit.no5 = level;
+        break;
+    case PIN_ID_LED:
+        P3_bit.no1 = level;
         break;
     default:
         /* 処理なし */
         break;
     }
+}
+
+/*
+ * Function: 
+ * Argument: 
+ * Return: 
+ * Note: 
+ */
+uint8_t ReadPin(pin_id_t pin)
+{
+    uint8_t level;
+
+    switch (pin) {
+    case PIN_ID_SW_L:
+        level = P5_bit.no0;
+        break;
+    case PIN_ID_SW_R:
+        level = P5_bit.no1;
+        break;
+    case PIN_ID_SW_A:
+        level = P5_bit.no2;
+        break;
+    case PIN_ID_SW_B:
+        level = P5_bit.no3;
+        break;
+    case PIN_ID_SW_C:
+        level = P5_bit.no4;
+        break;
+    case PIN_ID_SW_D:
+        level = P5_bit.no5;
+        break;
+    default:
+        level = LEVEL_LOW;
+        break;
+    }
+
+    return level;
 }

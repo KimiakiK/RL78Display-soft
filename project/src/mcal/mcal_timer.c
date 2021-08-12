@@ -49,7 +49,7 @@ void InitTimer(void)
 
     /* ユニット0 チャネル7をメイン周期用として使用 */
     TMR07 = 0x0000;     /* インターバルタイマ CK00 */
-    TDR07 = 999;        /* 1ms */
+    TDR07 = 9999;        /* 10ms */
 
     /* 出力設定 */
     TOM0 = 0x0002;      /* PWMスレイブチャネル出力 */
@@ -89,18 +89,18 @@ void SetDuty(uint16_t duty)
     TDR01 = duty;
 }
 
-void Start1msTimer(void)
+void Start10msTimer(void)
 {
     TMIF07 = 0;
     TS0 |= 0x0080;  /* ユニット0 チャネル7 動作開始 */
 }
 
-uint8_t Get1msTimerState(void)
+uint8_t Get10msTimerState(void)
 {
     return TMIF07;
 }
 
-void Clear1msTimerState(void)
+void Clear10msTimerState(void)
 {
     TMIF07 = 0;
 }

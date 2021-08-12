@@ -14,6 +14,8 @@
 
 /********** Define **********/
 
+#define DUTY_MAX        (5000)
+
 /********** Enum **********/
 
 /********** Type **********/
@@ -27,8 +29,8 @@
 void InitTimer(void);
 void WaitMs(uint16_t ms);
 void SetDuty(uint16_t duty);
-void Start1msTimer(void);
-uint8_t Get1msTimerState(void);
-void Clear1msTimerState(void);
+void Start10msTimer(void);
+uint8_t Get10msTimerState(void);
+void Clear10msTimerState(void);
 
 #endif /* include_define */

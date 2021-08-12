@@ -19,13 +19,13 @@
 /********** Type **********/
 
 typedef struct {
-    uint8_t sec;
-    uint8_t min;
-    uint8_t hour;
-    uint8_t week;
-    uint8_t day;
-    uint8_t month;
-    uint8_t year;
+    uint8_t sec;    /* 秒: 00～59(BCD) */
+    uint8_t min;    /* 分: 00～59(BCD) */
+    uint8_t hour;   /* 時: 00～23(BCD) */
+    uint8_t week;   /* 曜日 0:日, 1:月, 2:火, 3:水, 4:木, 5:金, 6:土 */
+    uint8_t day;    /* 日: 01～31(BCD) */
+    uint8_t month;  /* 月: 01～12(BCD) */
+    uint8_t year;   /* 年: 00～99(BCD) */
 } datetime_t;
 
 /********** Constant **********/
@@ -35,6 +35,6 @@ typedef struct {
 /********** Function Prototype **********/
 
 void InitRtc(void);
-void getExRtc(datetime_t* datetime);
+void GetDatetime(datetime_t* datetime);
 
 #endif /* DRV_RTC_H_ */
