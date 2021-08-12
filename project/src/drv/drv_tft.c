@@ -38,6 +38,7 @@ const static uint8_t data_MADCTL[] = {0x00};            /* Page Address Order: T
 // const static uint8_t command_INVOFF[] = {0x20};         /* INVOFF (20h): Display Inversion Off (0x0000:WHITE, 0xFFFF:BLACK */
 const static uint8_t command_INVON[] = {0x21};          /* INVON (21h): Display Inversion On (0x0000:BLACK, 0xFFFF:WHITE) */
 const static uint8_t command_NORON[] = {0x13};          /* NORON (13h): Normal Display Mode On */
+const static uint8_t command_DISPOFF[] = {0x28};         /* DISPOFF (28h): Display Off */
 const static uint8_t command_DISPON[] = {0x29};         /* DISPON (29h): Display On */
 const static uint8_t command_CASET[] = {0x2A};          /* CASET (2Ah): Column Address Set */
 const static uint8_t command_RASET[] = {0x2B};          /* RASET (2Bh): Row Address Set */
@@ -100,6 +101,7 @@ void TftOff(void)
 {
     /* 表示終了 */
     LightOff();
+    sendCommand((uint32_t)((uint8_t __far *)command_DISPOFF), sizeof(command_DISPOFF));
 }
 
 /*

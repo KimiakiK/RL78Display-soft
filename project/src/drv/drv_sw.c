@@ -15,6 +15,7 @@
 /********** Define **********/
 
 #define SW_FIX_MATCH_NUM    (4)
+#define MAIN_PERIOD         (10)
 
 /********** Enum **********/
 
@@ -35,13 +36,14 @@ sw_value_t old_raw_value[SW_ID_NUM];
 sw_value_t current_fix_value[SW_ID_NUM];
 sw_value_t old_fix_value[SW_ID_NUM];
 uint8_t match_num[SW_ID_NUM];
-
+uint16_t no_input_time;
 
 /********** Function Prototype **********/
 
 void makeRowValue(void);
 void judgeFixValue(void);
 void judgeSwState(void);
+void updateNoInputTime(void);
 void updateOldValue(void);
 
 /********** Function **********/
@@ -64,6 +66,8 @@ void InitSw(void)
         old_fix_value[index] = SW_VALUE_OFF;
         match_num[index] = SW_FIX_MATCH_NUM;
     }
+
+    no_input_time = 0;
 }
 
 /*
@@ -77,6 +81,7 @@ void MainSw(void)
     makeRowValue();
     judgeFixValue();
     judgeSwState();
+    updateNoInputTime();
     updateOldValue();
 }
 
@@ -89,6 +94,17 @@ void MainSw(void)
 sw_state_t GetSw(sw_id_t sw_id)
 {
     return sw_state[sw_id];
+}
+
+/*
+ * Function: 
+ * Argument: 
+ * Return: 
+ * Note: 
+ */
+uint16_t GetNoInputTime(void)
+{
+    return no_input_time;
 }
 
 /*
@@ -218,6 +234,21 @@ void makeRowValue(void)
     } else {
         current_raw_value[SW_ID_POS_L] = SW_VALUE_OFF;
         current_raw_value[SW_ID_POS_R] = SW_VALUE_OFF;
+    }
+}
+
+void updateNoInputTime(void)
+{
+    uint8_t index;
+
+    if (no_input_time + MAIN_PERIOD < 0xFFFF) {
+        no_input_time += MAIN_PERIOD;
+    }
+
+    for (index=0; index< SW_ID_NUM; index++) {
+        if (current_raw_value[index] == SW_VALUE_ON) {
+            no_input_time = 0;
+        }
     }
 }
 

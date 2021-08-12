@@ -49,5 +49,6 @@ typedef enum sw_id_enum {
 void InitSw(void);
 void MainSw(void);
 sw_state_t GetSw(sw_id_t sw_id);
+uint16_t GetNoInputTime(void);
 
 #endif /* DRV_SW_H_ */

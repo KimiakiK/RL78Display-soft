@@ -11,6 +11,7 @@
 #include "lib_graphic.h"
 #include "drv_sw.h"
 #include "drv_tft.h"
+#include "drv_rtc.h"
 #include "apl_clock.h"
 #include "apl_controller.h"
 #include "apl_display.h"
@@ -84,8 +85,19 @@ void transitionDisplayState(void)
         display_state = DISPLAY_STATE_ON;
         break;
     case DISPLAY_STATE_OFF:
+        if ( (GetSw(SW_ID_L) == SW_ON) && (GetSw(SW_ID_R) == SW_ON) ) {
+            InitRtc();
+            displayBackground();
+            TftOn();
+            InitClock();
+            display_state = DISPLAY_STATE_ON;
+        }
         break;
     case DISPLAY_STATE_ON:
+        if (GetNoInputTime() > 20000) {
+            TftOff();
+            display_state = DISPLAY_STATE_OFF;
+        }
         break;
     default:
         /* 処理なし */
