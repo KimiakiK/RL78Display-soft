@@ -80,10 +80,3 @@ uint8_t Video_memory[240*60*2];
 /********** Function Prototype **********/
 
 /********** Function **********/
-
-/*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
- */

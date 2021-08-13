@@ -42,10 +42,10 @@ static uint8_t old_day;
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 時計表示初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: 変数初期化
  */
 void InitClock(void)
 {
@@ -53,6 +53,12 @@ void InitClock(void)
     old_day = 0xFF;
 }
 
+/*
+ * Function: ミニ時計表示
+ * Argument: 無し
+ * Return: 無し
+ * Note: 画面右上に時計を表示
+ */
 void DrawMiniClock(void)
 {
     datetime_t datetime;
@@ -79,6 +85,12 @@ void DrawMiniClock(void)
     }
 }
 
+/*
+ * Function: 日時表示
+ * Argument: 無し
+ * Return: 無し
+ * Note: 画面中央に日付と時間を表示
+ */
 void DrawCenterClock(void)
 {
     datetime_t datetime;

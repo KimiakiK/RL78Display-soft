@@ -26,10 +26,10 @@
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: AD変換初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: AD変換レジスタ初期化
  */
 void InitAdc(void)
 {
@@ -42,10 +42,10 @@ void InitAdc(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: AD変換結果取得
+ * Argument: AD変換対象ID
+ * Return: AD変換結果
+ * Note: 指定のAD変換を実施して結果を返す
  */
 uint16_t GetAdc(adc_id_t adc_id)
 {

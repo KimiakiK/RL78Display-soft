@@ -49,10 +49,10 @@ void updateOldValue(void);
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: スイッチ入力初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: 変数初期化
  */
 void InitSw(void)
 {
@@ -71,10 +71,10 @@ void InitSw(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: スイッチ入力周期処理
+ * Argument: 無し
+ * Return: 無し
+ * Note: スイッチ入力の確定判定
  */
 void MainSw(void)
 {
@@ -86,10 +86,10 @@ void MainSw(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: スイッチ入力取得
+ * Argument: スイッチID
+ * Return: スイッチ状態
+ * Note: 指定スイッチの状態を返す
  */
 sw_state_t GetSw(sw_id_t sw_id)
 {
@@ -97,10 +97,10 @@ sw_state_t GetSw(sw_id_t sw_id)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 無操作時間取得
+ * Argument: 無し
+ * Return: 無操作時間[ms]
+ * Note: 無操作時間を返す
  */
 uint16_t GetNoInputTime(void)
 {
@@ -108,10 +108,10 @@ uint16_t GetNoInputTime(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: スイッチ入力確定判定
+ * Argument: 無し
+ * Return: 無し
+ * Note: スイッチ入力の一致回数を判定
  */
 void judgeFixValue(void)
 {
@@ -133,10 +133,10 @@ void judgeFixValue(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: スイッチ状態判定
+ * Argument: 無し
+ * Return: 無し
+ * Note: 確定したスイッチ入力からスイッチ状態を判定
  */
 void judgeSwState(void)
 {
@@ -160,10 +160,10 @@ void judgeSwState(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: スイッチ入力値作成
+ * Argument: 無し
+ * Return: 無し
+ * Note: スイッチ入力の元となる信号を収集
  */
 void makeRowValue(void)
 {
@@ -237,6 +237,12 @@ void makeRowValue(void)
     }
 }
 
+/*
+ * Function: 無操作時間更新
+ * Argument: 無し
+ * Return: 無し
+ * Note: 確定したスイッチ入力から無操作の時間を判定
+ */
 void updateNoInputTime(void)
 {
     uint8_t index;
@@ -252,6 +258,12 @@ void updateNoInputTime(void)
     }
 }
 
+/*
+ * Function: 前回値更新
+ * Argument: 無し
+ * Return: 無し
+ * Note: 今回値を前回値として保持
+ */
 void updateOldValue(void)
 {
     uint8_t index;

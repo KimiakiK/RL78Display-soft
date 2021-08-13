@@ -28,21 +28,34 @@ static uint8_t duty;
 /********** Function **********/
 
 /*
- * Function: %function%
- * Argument: %argument%
- * Return: %return%
- * Note: %note%
+ * Function: 照明初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: 変数初期化
  */
 void InitLight(void)
 {
     duty = 50;
 }
 
+
+/*
+ * Function: 照明点灯
+ * Argument: 無し
+ * Return: 無し
+ * Note: 照明用のPWM出力設定
+ */
 void LightOn(void)
 {
     SetDuty(duty * (DUTY_MAX / 100));
 }
 
+/*
+ * Function: 照明消灯
+ * Argument: 無し
+ * Return: 無し
+ * Note: 照明用のPWM出力停止
+ */
 void LightOff(void)
 {
     SetDuty(0);

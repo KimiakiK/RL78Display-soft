@@ -40,10 +40,10 @@ uint8_t convertWeekExternalToMicom(uint8_t week);
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: RTC初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: 外部RTCの状態を判定して、内部のRTCを初期化
  */
 void InitRtc(void)
 {
@@ -74,11 +74,23 @@ void InitRtc(void)
     InitMicomRtc(&datetime);
 }
 
+/*
+ * Function: 日時取得
+ * Argument: 日時
+ * Return: 無し
+ * Note: 内蔵RTCの日時を返す
+ */
 void GetDatetime(datetime_t* datetime)
 {
     GetMicomRtcDatatime(datetime);
 }
 
+/*
+ * Function: 外部RTC初期化
+ * Argument: 日時
+ * Return: 無し
+ * Note: 外部RTC ICのレジスタを全初期化
+ */
 void initExRtc(datetime_t* datetime)
 {
     /* コントロールレジスタ・フラグレジスタ 0x0D, 0x0E 初期化 */
@@ -100,6 +112,12 @@ void initExRtc(datetime_t* datetime)
     setExRtc(datetime);
 }
 
+/*
+ * Function: 外部RTC日時設定
+ * Argument: 日時
+ * Return: 無し
+ * Note: 外部RTC ICの日時を設定
+ */
 void setExRtc(datetime_t* datetime)
 {
     /* 秒未満のカウンタリセット 0x0F */
@@ -122,6 +140,12 @@ void setExRtc(datetime_t* datetime)
     send_data[1] = 0x41;    /* Control Register: 温度補償間隔2.0s、RESET */
 }
 
+/*
+ * Function: 外部RTC日時取得
+ * Argument: 日時
+ * Return: 無し
+ * Note: 外部RTC ICの日時取得
+ */
 void getExRtc(datetime_t* datetime)
 {
     /* 日時読み出し */
@@ -136,7 +160,12 @@ void getExRtc(datetime_t* datetime)
     datetime->year = receive_data[6];
 }
 
-
+/*
+ * Function: 曜日変換(内蔵→外部)
+ * Argument: 曜日
+ * Return: 曜日
+ * Note: 曜日を内蔵RTCの形式から外部RTCの形式に変換
+ */
 uint8_t convertWeekMicomToExternal(uint8_t week)
 {
     week = 1 << week;
@@ -144,6 +173,12 @@ uint8_t convertWeekMicomToExternal(uint8_t week)
     return week;
 }
 
+/*
+ * Function: 曜日変換(外部→内蔵)
+ * Argument: 曜日
+ * Return: 曜日
+ * Note: 曜日を外部RTCの形式から内蔵RTCの形式に変換
+ */
 uint8_t convertWeekExternalToMicom(uint8_t week)
 {
     switch (week) {

@@ -59,10 +59,10 @@ void displayBackground(void);
 /********** Function **********/
 
 /*
- * Function: %function%
- * Argument: %argument%
- * Return: %return%
- * Note: %note%
+ * Function: 画面表示初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: 変数初期化
  */
 void InitDisplay(void)
 {
@@ -70,12 +70,24 @@ void InitDisplay(void)
     display_id = DISPLAY_ID_TITLE;
 }
 
+/*
+ * Function: 画面表示周期処理
+ * Argument: 無し
+ * Return: 無し
+ * Note: 画面遷移と表示更新
+ */
 void MainDisplay(void)
 {
     transitionDisplayState();
     processDisplayState();
 }
 
+/*
+ * Function: 表示状態遷移
+ * Argument: 無し
+ * Return: 無し
+ * Note: 表示状態の遷移を判定
+ */
 void transitionDisplayState(void)
 {
     switch (display_state) {
@@ -88,6 +100,7 @@ void transitionDisplayState(void)
         break;
     case DISPLAY_STATE_OFF:
         if ( (GetSw(SW_ID_L) == SW_ON) && (GetSw(SW_ID_R) == SW_ON) ) {
+            /* SW LとSW R同時押しで画面表示再開 */
             InitRtc();
             displayBackground();
             TftOn();
@@ -97,6 +110,7 @@ void transitionDisplayState(void)
         break;
     case DISPLAY_STATE_ON:
         if (GetNoInputTime() > 20000) {
+            /* 無操作一定時間経過で画面表示停止 */
             TftOff();
             display_state = DISPLAY_STATE_OFF;
         }
@@ -107,15 +121,25 @@ void transitionDisplayState(void)
     }
 }
 
+/*
+ * Function: 表示状態処理
+ * Argument: 無し
+ * Return: 無し
+ * Note: 各表示状態の処理実行
+ */
 void processDisplayState(void)
 {
     switch (display_state) {
     case DISPLAY_STATE_INIT:
+        /* 処理なし */
         break;
+        /* 処理なし */
     case DISPLAY_STATE_OFF:
         break;
     case DISPLAY_STATE_ON:
+        /* 画面遷移 */
         transitionDisplayId();
+        /* 画面処理 */
         processDisplayId();
         break;
     default:
@@ -124,6 +148,12 @@ void processDisplayState(void)
     }
 }
 
+/*
+ * Function: 画面遷移
+ * Argument: 無し
+ * Return: 無し
+ * Note: 画面の遷移判定
+ */
 void transitionDisplayId(void)
 {
     display_id_t old_display_id;
@@ -155,6 +185,12 @@ void transitionDisplayId(void)
     }
 }
 
+/*
+ * Function: 画面処理
+ * Argument: 無し
+ * Return: 無し
+ * Note: 各画面の表示処理実行
+ */
 void processDisplayId(void)
 {
     switch (display_id) {
@@ -180,9 +216,11 @@ void processDisplayId(void)
 
         break;
     case DISPLAY_ID_CLOCK:
+        /* 画面中央に日時表示 */
         DrawCenterClock();
         break;
     case DISPLAY_ID_CONTROLLER:
+        /* コントローラ操作表示 */
         DrawControllerSw();
         break;
     default:
@@ -191,6 +229,12 @@ void processDisplayId(void)
     }
 }
 
+/*
+ * Function: 画面背景表示
+ * Argument: 無し
+ * Return: 無し
+ * Note: 各画面の背景画像を表示
+ */
 void displayBackground(void)
 {
     switch (display_id) {

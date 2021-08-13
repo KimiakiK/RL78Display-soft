@@ -69,10 +69,10 @@ void InitPort(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 端子出力設定
+ * Argument: 端子、出力レベル
+ * Return: 無し
+ * Note: 指定端子を指定出力レベルに設定
  */
 void WritePin(pin_id_t pin, uint8_t level)
 {
@@ -96,10 +96,10 @@ void WritePin(pin_id_t pin, uint8_t level)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 端子入力取得
+ * Argument: 端子
+ * Return: 入力レベル
+ * Note: 指定端子の入力レベルを返す
  */
 uint8_t ReadPin(pin_id_t pin)
 {

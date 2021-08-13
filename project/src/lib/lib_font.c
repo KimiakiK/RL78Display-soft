@@ -99,10 +99,10 @@ const font_t font[FONT_ID_NUM] = {
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 文字描画
+ * Argument: 描画対象メモリ、横位置、フォントID
+ * Return: 無し
+ * Note: 指定文字を描画対象メモリに描画
  */
 void drawFont(image_t* target_image, uint16_t pos_x, font_id_t font_id)
 {

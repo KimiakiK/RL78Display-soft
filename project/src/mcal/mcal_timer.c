@@ -26,10 +26,10 @@
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: タイマ初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: 使用するタイマのレジスタを初期化
  */
 void InitTimer(void)
 {
@@ -62,10 +62,10 @@ void InitTimer(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: ミリ秒待機
+ * Argument: 待機ミリ秒[ms]
+ * Return: 無し
+ * Note: 指定された時間待機
  */
 void WaitMs(uint16_t ms)
 {
@@ -79,27 +79,45 @@ void WaitMs(uint16_t ms)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: PWMデューティ設定
+ * Argument: PWMデューティ値
+ * Return: 無し
+ * Note: PWMのデューティを設定
  */
 void SetDuty(uint16_t duty)
 {
     TDR01 = duty;
 }
 
+/*
+ * Function: 10ms周期タイマ開始
+ * Argument: 無し
+ * Return: 無し
+ * Note: 10ms周期用のタイマを開始
+ */
 void Start10msTimer(void)
 {
     TMIF07 = 0;
     TS0 |= 0x0080;  /* ユニット0 チャネル7 動作開始 */
 }
 
+/*
+ * Function: 10msタイマ状態取得
+ * Argument: 無し
+ * Return: 10msタイマ状態
+ * Note: 10msタイマの経過状態を返す
+ */
 uint8_t Get10msTimerState(void)
 {
     return TMIF07;
 }
 
+/*
+ * Function: 10msタイマ状態クリア
+ * Argument: 無し
+ * Return: 無し
+ * Note: 10msタイマのフラグをクリア
+ */
 void Clear10msTimerState(void)
 {
     TMIF07 = 0;

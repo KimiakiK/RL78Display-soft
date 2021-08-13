@@ -27,10 +27,10 @@
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 内蔵RTC初期化
+ * Argument: 日時
+ * Return: 無し
+ * Note: 内蔵RTCを指定日時で初期化
  */
 void InitMicomRtc(datetime_t* datetime)
 {
@@ -47,10 +47,10 @@ void InitMicomRtc(datetime_t* datetime)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 内蔵RTC日時取得
+ * Argument: 日時
+ * Return: 無し
+ * Note: 内蔵RTCの日時を返す
  */
 void GetMicomRtcDatatime(datetime_t* datetime)
 {
@@ -70,10 +70,10 @@ void GetMicomRtcDatatime(datetime_t* datetime)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 内蔵RTC日時設定
+ * Argument: 日時
+ * Return: 無し
+ * Note: 内蔵RTCに指定日時を設定
  */
 void SetMicomRtcDatetime(datetime_t* datetime)
 {

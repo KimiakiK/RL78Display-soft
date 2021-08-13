@@ -34,10 +34,10 @@ static uint8_t receive_length;
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: IIC初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: IICレジスタ初期化
  */
 void InitIic(void)
 {
@@ -65,11 +65,23 @@ void InitIic(void)
     PM6 &= 0xFC;        /* SCLA0とSDAA0端子を出力に設定 */
 }
 
+/*
+ * Function: IIC通信状態取得
+ * Argument: 無し
+ * Return: IIC通信状態
+ * Note: IIC通信状態を返す
+ */
 uint8_t GetIicState(void)
 {
     return iic_state;
 }
 
+/*
+ * Function: IICデータ送信
+ * Argument: 通信対象デバイスアドレス、送信データ先頭アドレス、送信データ長、送信方法(同期/非同期)
+ * Return: 無し
+ * Note: 指定データを送信
+ */
 void SendIic(uint8_t address, uint8_t* data, uint8_t length, uint8_t type)
 {
     if (iic_state == IIC_STATE_IDLE) {
@@ -92,6 +104,12 @@ void SendIic(uint8_t address, uint8_t* data, uint8_t length, uint8_t type)
     }
 }
 
+/*
+ * Function: IICデータ受信
+ * Argument: 通信対象デバイスアドレス、送信データ先頭アドレス、送信データ長、受信データ格納アドレス、受信データ長、通信方法(同期/非同期)
+ * Return: 無し
+ * Note: 指定データを送信後にデータ受信
+ */
 void ReceiveIic(uint8_t address, uint8_t* s_data, uint8_t s_length, uint8_t* r_data, uint8_t r_length, uint8_t type)
 {
     if (iic_state == IIC_STATE_IDLE) {
@@ -115,6 +133,12 @@ void ReceiveIic(uint8_t address, uint8_t* s_data, uint8_t s_length, uint8_t* r_d
 }
 
 #pragma interrupt IntrIic(vect=INTIICA0)
+/*
+ * Function: IIC割り込み処理関数
+ * Argument: 無し
+ * Return: 無し
+ * Note: IIC通信の各種割り込みを処理
+ */
 void IntrIic(void)
 {
     switch (iic_state) {
@@ -199,55 +223,4 @@ void IntrIic(void)
         /* 処理なし */
         break;
     }
-    // /* アクノリッジ検出を判定 */
-    // if (ACKD0 == 1) {
-    //     /* 送信／受信状態判定 */
-    //     if (TRC0 == 1) {
-    //         /* 次データ有無判定 */
-    //         if (send_length > 0) {
-    //             IICA0 = *send_data;
-    //             send_data ++;
-    //             send_length --;
-    //         } else {
-    //             /* 受信データ有無判定 */
-    //             if (receive_length > 0) {
-    //                 /* アクノリッジ設定 */
-    //                 if (receive_length == 1) {
-    //                     ACKE0 = 1;
-    //                 } else {
-    //                     ACKE0 = 1;
-    //                 }
-    //                 /* スタート・コンディションを生成 */
-    //                 STT0 = 1;
-    //                 /* アドレスを送信、bit0はread(1)固定 */
-    //                 IICA0 = target_address | 0x01;
-    //             } else {
-    //                 /* ストップ・コンディションを生成 */
-    //                 SPT0 = 1;
-    //             }
-    //         }
-    //     } else {
-    //         /* 受信データを格納 */
-    //         *receive_data = IICA0;
-    //         receive_data ++;
-    //         receive_length --;
-
-    //         if (receive_length > 0) {
-    //             /* アクノリッジ設定 */
-    //             if (receive_length == 1) {
-    //                 ACKE0 = 0;
-    //             } else {
-    //                 ACKE0 = 1;
-    //             }
-    //             WTIM0 = 1;
-    //             WREL0 = 1;
-    //         } else {
-    //             /* ストップ・コンディションを生成 */
-    //             SPT0 = 1;
-    //         }
-    //     }
-    // } else {
-    //     /* 通信終了 */
-    //     iic_state = IIC_STATE_IDLE;
-    // }
 }

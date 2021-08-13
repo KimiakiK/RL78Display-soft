@@ -26,10 +26,10 @@
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: ブザー鳴動開始
+ * Argument: 周波数
+ * Return: 無し
+ * Note: 指定周波数でブザー鳴動を開始
  */
 void PlayBuzzer(frequency_id_t frequency_id)
 {
@@ -61,6 +61,12 @@ void PlayBuzzer(frequency_id_t frequency_id)
     }
 }
 
+/*
+ * Function: ブザー鳴動停止
+ * Argument: 無し
+ * Return: 無し
+ * Note: ブザー鳴動を停止
+ */
 void StopBuzzer(void)
 {
     PCLOE0 = 0;

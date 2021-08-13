@@ -57,10 +57,10 @@ void setArea(uint8_t x, uint8_t y, uint8_t w, uint8_t h);
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: TFT初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: TFTのIC ST7789を初期化
  */
 void InitTft(void)
 {
@@ -83,6 +83,13 @@ void InitTft(void)
     sendCommand((uint32_t)((uint8_t __far *)command_NORON), sizeof(command_NORON));
 }
 
+
+/*
+ * Function: 画像描画
+ * Argument: 横位置、縦位置、横幅、縦幅、画像データの先頭アドレス
+ * Return: 無し
+ * Note: 指定画像をTFTに表示
+ */
 void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data)
 {
     setArea(x, y, w, h);
@@ -90,6 +97,12 @@ void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data)
     sendData(data, (uint32_t)w * h * 2);
 }
 
+/*
+ * Function: TFT表示開始
+ * Argument: 無し
+ * Return: 無し
+ * Note: TFT表示を開始してバックライトを点灯
+ */
 void TftOn(void)
 {
     /* 表示開始 */
@@ -97,6 +110,12 @@ void TftOn(void)
     LightOn();
 }
 
+/*
+ * Function: TFT表示終了
+ * Argument: 無し
+ * Return: 無し
+ * Note: バックライトを消灯してTFT表示を終了
+ */
 void TftOff(void)
 {
     /* 表示終了 */
@@ -105,10 +124,10 @@ void TftOff(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: TFT操作コマンド送信
+ * Argument: コマンド先頭アドレス、送信コマンド長
+ * Return: 無し
+ * Note: 指定コマンドを送信
  */
 void sendCommand(uint32_t data_address, uint32_t length)
 {
@@ -117,10 +136,10 @@ void sendCommand(uint32_t data_address, uint32_t length)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: TFT操作データ送信
+ * Argument: データ先頭アドレス、送信データ長
+ * Return: 無し
+ * Note: 指定データを送信
  */
 void sendData(uint32_t data_address, uint32_t length)
 {
@@ -129,10 +148,10 @@ void sendData(uint32_t data_address, uint32_t length)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: 描画領域設定
+ * Argument: 横位置、縦位置、横幅、縦幅
+ * Return: 無し
+ * Note: 指定領域を描画領域としてTFTに指示
  */
 void setArea(uint8_t x, uint8_t y, uint8_t w, uint8_t h)
 {

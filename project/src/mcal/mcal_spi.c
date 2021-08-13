@@ -40,10 +40,10 @@ void sendSpi(uint32_t data_address, uint32_t length);
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: SPI初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: SPIレジスタ初期化
  */
 void InitSpi(void)
 {
@@ -69,10 +69,10 @@ void InitSpi(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: SPI同期送信
+ * Argument: データ先頭アドレス、データ長
+ * Return: 無し
+ * Note: 指定データを送信し、送信完了まで待つ
  */
 void SendSyncSpi(uint32_t data_address, uint32_t length)
 {
@@ -82,10 +82,10 @@ void SendSyncSpi(uint32_t data_address, uint32_t length)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: SPI非同期送信
+ * Argument: データ先頭アドレス、データ長
+ * Return: 無し
+ * Note: 指定データを送信し、送信完了まで待たない
  */
 void SendAsyncSpi(uint32_t data_address, uint32_t length)
 {
@@ -94,10 +94,10 @@ void SendAsyncSpi(uint32_t data_address, uint32_t length)
 
 #pragma interrupt IntrSpi(vect=INTCSI00)
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: SPI割り込み処理
+ * Argument: 無し
+ * Return: 無し
+ * Note: SPI送信完了時に次データの送信を処理
  */
 void IntrSpi(void)
 {
@@ -118,10 +118,10 @@ void IntrSpi(void)
 }
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: SPI送信開始
+ * Argument: データ先頭アドレス、データ長
+ * Return: 無し
+ * Note: 最初のデータを送信
  */
 void sendSpi(uint32_t data_address, uint32_t length)
 {

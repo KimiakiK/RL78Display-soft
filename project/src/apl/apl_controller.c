@@ -28,10 +28,10 @@
 /********** Function **********/
 
 /*
- * Function: 
- * Argument: 
- * Return: 
- * Note: 
+ * Function: コントローラ操作表示
+ * Argument: 無し
+ * Return: 無し
+ * Note: コントローラのSW操作を表示
  */
 void DrawControllerSw(void)
 {
@@ -39,7 +39,7 @@ void DrawControllerSw(void)
     sw_state_t sw_state;
 
     for (sw_id=0; sw_id<8; sw_id++) {
-        sw_state = GetSw(sw_id + SW_ID_A);
+        sw_state = GetSw((sw_id_t)(sw_id + SW_ID_A));
         if (sw_state == SW_PUSH) {
             DrawTft(sw_on_sprite[sw_id].x, sw_on_sprite[sw_id].y, sw_on_sprite[sw_id].w, sw_on_sprite[sw_id].h, sw_on_sprite[sw_id].address);
         } else if (sw_state == SW_RELEASE) {
