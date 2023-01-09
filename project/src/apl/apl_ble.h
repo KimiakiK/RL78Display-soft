@@ -24,5 +24,7 @@
 
 void InitBle(void);
 void MainBle(void);
+void InitDrawBle(void);
+void DrawBle(void);
 
 #endif /* APL_BLE_H_ */

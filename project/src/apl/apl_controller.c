@@ -28,6 +28,21 @@
 /********** Function **********/
 
 /*
+ * Function: コントローラ操作表示初期化
+ * Argument: 無し
+ * Return: 無し
+ * Note: コントローラのSW操作OFF状態を表示
+ */
+void DrawControllerSwInit(void)
+{
+    uint8_t sw_id;
+
+    for (sw_id=0; sw_id<8; sw_id++) {
+        DrawTft(sw_off_sprite[sw_id].x, sw_off_sprite[sw_id].y, sw_off_sprite[sw_id].w, sw_off_sprite[sw_id].h, sw_off_sprite[sw_id].address);
+    }
+}
+
+/*
  * Function: コントローラ操作表示
  * Argument: 無し
  * Return: 無し

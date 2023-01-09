@@ -11,6 +11,7 @@
 /********** Include **********/
 
 #include "typedef.h"
+#include "lib_graphic.h"
 
 /********** Define **********/
 
@@ -61,5 +62,6 @@ typedef enum font_id_enum {
 /********** Function Prototype **********/
 
 void drawFont(image_t* target_image, uint16_t pos_x, font_id_t font_id);
+void DrawAscii(uint8_t ascii, uint16_t x, uint16_t y);
 
 #endif /* LIB_FONT_H_ */

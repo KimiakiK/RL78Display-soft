@@ -98,6 +98,20 @@ void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data)
 }
 
 /*
+ * Function: TFT表示クリア
+ * Argument: 無し
+ * Return: 無し
+ * Note: TFT表示を黒色でクリア
+ */
+void TftClear(void)
+{
+    setArea(0, 0, TFT_WIDTH, TFT_HEIGHT);
+    sendCommand((uint32_t)((uint8_t __far *)command_RAMWR), sizeof(command_RAMWR));
+    WritePin(PIN_ID_TFT_DC, PIN_DC_DATA);
+    SendFixDataSyncSpi(0x00,  (uint32_t)TFT_WIDTH * TFT_HEIGHT * 2);
+}
+
+/*
  * Function: TFT表示開始
  * Argument: 無し
  * Return: 無し

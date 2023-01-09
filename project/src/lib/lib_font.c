@@ -10,6 +10,7 @@
 #include "typedef.h"
 #include "lib_graphic.h"
 #include "lib_font.h"
+#include "drv_tft.h"
 
 /********** Define **********/
 
@@ -117,5 +118,18 @@ void drawFont(image_t* target_image, uint16_t pos_x, font_id_t font_id)
             Video_memory[index] = *(uint8_t __far *)address;
             Video_memory[index + 1] = *(uint8_t __far *)(address + 1);
         }
+    }
+}
+
+/*
+ * Function: ASCII文字描画
+ * Argument: ASCIIコード、横位置、縦位置
+ * Return: 無し
+ * Note: 指定文字を描画
+ */
+void DrawAscii(uint8_t ascii, uint16_t x, uint16_t y)
+{
+    if ((ascii >= 0x20) && ascii <= 0x7E) {
+        DrawTft(x, y, 10, 20, (uint32_t)image[IMAGE_ID_FONT_20PX].address + (uint32_t)(ascii - 0x20) * (10 * 20) * 2);
     }
 }

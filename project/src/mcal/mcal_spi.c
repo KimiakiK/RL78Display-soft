@@ -21,6 +21,10 @@
 #define SMR_CSI_CK00_INTR_FINISH    (0x0020)
 #define SMR_CSI_CK00_INTR_EMPTY     (0x0021)
 
+/* 送信アドレスインクリメントモード */
+#define SEND_ADDRESS_INCREMENT_OFF  (0)
+#define SEND_ADDRESS_INCREMENT_ON   (1)
+
 /********** Enum **********/
 
 /********** Type **********/
@@ -32,6 +36,7 @@
 static uint8_t spi_state;
 static uint32_t send_data_address;
 static uint32_t send_length;
+static uint8_t send_address_increment;
 
 /********** Function Prototype **********/
 
@@ -51,6 +56,7 @@ void InitSpi(void)
     spi_state = SPI_IDLE;
     send_data_address = 0;
     send_length = 0;
+    send_address_increment = SEND_ADDRESS_INCREMENT_ON;
 
     /* SFR初期化 */
     SAU0EN = 1;         /* クロック供給許可 */
@@ -76,6 +82,7 @@ void InitSpi(void)
  */
 void SendSyncSpi(uint32_t data_address, uint32_t length)
 {
+    send_address_increment = SEND_ADDRESS_INCREMENT_ON;
     sendSpi(data_address, length);
 
     while (spi_state == SPI_SEND) { }
@@ -89,7 +96,22 @@ void SendSyncSpi(uint32_t data_address, uint32_t length)
  */
 void SendAsyncSpi(uint32_t data_address, uint32_t length)
 {
+    send_address_increment = SEND_ADDRESS_INCREMENT_ON;
     sendSpi(data_address, length);
+}
+
+/*
+ * Function: SPI固定データ同期送信
+ * Argument: 送信データ、データ長
+ * Return: 無し
+ * Note: 固定データを送信し、送信完了まで待つ
+ */
+void SendFixDataSyncSpi(uint8_t data, uint32_t length)
+{
+    send_address_increment = SEND_ADDRESS_INCREMENT_OFF;
+    sendSpi((uint32_t)((uint8_t __far *)&data), length);
+
+    while (spi_state == SPI_SEND) { }
 }
 
 #pragma interrupt IntrSpi(vect=INTCSI00)
@@ -102,7 +124,9 @@ void SendAsyncSpi(uint32_t data_address, uint32_t length)
 void IntrSpi(void)
 {
     send_length --;
-    send_data_address ++;
+    if (send_address_increment == SEND_ADDRESS_INCREMENT_ON) {
+        send_data_address ++;
+    }
 
     if (send_length == 0) {
         /* 全データ送信完了 */

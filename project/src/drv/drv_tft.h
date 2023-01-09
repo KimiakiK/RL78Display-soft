@@ -29,6 +29,7 @@
 
 void InitTft(void);
 void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data);
+void TftClear(void);
 void TftOn(void);
 void TftOff(void);
 

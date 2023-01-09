@@ -17,6 +17,7 @@
 #include "apl_clock.h"
 #include "apl_controller.h"
 #include "apl_display.h"
+#include "apl_ble.h"
 
 /********** Define **********/
 
@@ -36,6 +37,7 @@ typedef enum display_id_type {
     DISPLAY_ID_TITLE = 0,
     DISPLAY_ID_CLOCK,
     DISPLAY_ID_CONTROLLER,
+    DISPLAY_ID_BLE,
     DISPLAY_ID_NUM
 } display_id_t;
 
@@ -223,6 +225,10 @@ void processDisplayId(void)
         /* コントローラ操作表示 */
         DrawControllerSw();
         break;
+    case DISPLAY_ID_BLE:
+        /* BLE通信表示 */
+        DrawBle();
+        break;
     default:
         /* 処理なし */
         break;
@@ -245,7 +251,12 @@ void displayBackground(void)
         DrawTft(0, 0 , image[IMAGE_ID_BACKGROUND_CLOCK].width, image[IMAGE_ID_BACKGROUND_CLOCK].heigth, image[IMAGE_ID_BACKGROUND_CLOCK].address);
         break;
     case DISPLAY_ID_CONTROLLER:
-        DrawTft(0, 0 , image[IMAGE_ID_BACKGROUND_CONTROLLER].width, image[IMAGE_ID_BACKGROUND_CONTROLLER].heigth, image[IMAGE_ID_BACKGROUND_CONTROLLER].address);
+        TftClear();
+        DrawControllerSwInit();
+        break;
+    case DISPLAY_ID_BLE:
+        TftClear();
+        InitDrawBle();
         break;
     default:
         /* 処理なし */

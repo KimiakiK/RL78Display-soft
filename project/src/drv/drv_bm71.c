@@ -187,6 +187,10 @@ bm71_result_t GetTransparentReceiveData(uint8_t* data)
 
 	if (transparent_receive_data_end != transparent_receive_data_front) {
 		*data = transparent_receive_data[transparent_receive_data_end];
+		transparent_receive_data_end++;
+		if (transparent_receive_data_end >= TRANSPARENT_RECEIVE_BUFFER_SIZE) {
+			transparent_receive_data_end = 0;
+		}
 		result = BM71_RESULT_OK;
 	}
 

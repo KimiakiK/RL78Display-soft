@@ -24,6 +24,7 @@
 
 /********** Function Prototype **********/
 
+void DrawControllerSwInit(void);
 void DrawControllerSw(void);
 
 #endif /* APL_CONTROLLER_H_ */

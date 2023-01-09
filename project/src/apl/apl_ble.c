@@ -10,6 +10,8 @@
 #include "typedef.h"
 #include "apl_ble.h"
 #include "drv_bm71.h"
+#include "drv_sw.h"
+#include "lib_font.h"
 
 /********** Define **********/
 
@@ -32,6 +34,9 @@ typedef enum {
 
 static ble_state_t ble_state;
 
+static uint8_t text_pos_x;
+static uint8_t text_pos_y;
+
 /********** Function Prototype **********/
 
 void transitionBleState(void);
@@ -47,6 +52,9 @@ void transitionBleState(void);
 void InitBle(void)
 {
 	ble_state = BLE_STATE_INIT;
+
+	text_pos_x = 0;
+	text_pos_y = 0;
 }
 
 /*
@@ -58,6 +66,66 @@ void InitBle(void)
 void MainBle(void)
 {
 	transitionBleState();
+}
+
+/*
+ * Function: BLE通信表示初期化
+ * Argument: なし
+ * Return  : なし
+ * Note    : なし
+ */
+void InitDrawBle(void)
+{
+	text_pos_x = 0;
+	text_pos_y = 0;
+}
+
+/*
+ * Function: BLE通信表示
+ * Argument: なし
+ * Return  : なし
+ * Note    : なし
+ */
+void DrawBle(void)
+{
+	bm71_result_t result;
+	uint8_t data;
+
+	result = GetTransparentReceiveData(&data);
+
+	if (result == BM71_RESULT_OK) {
+		if (data == '\n') {
+			text_pos_x = 0;
+			text_pos_y++;
+		} else {
+			DrawAscii(data, text_pos_x * 10, text_pos_y * 20);
+			text_pos_x++;
+		}
+		if (text_pos_x >= 24) {
+			text_pos_x = 0;
+			text_pos_y++;
+		}
+		if (text_pos_y >= 12) {
+			text_pos_y = 0;
+		}
+	}
+
+	if (ble_state == BLE_STATE_CONNECTED) {
+		uint8_t text[SW_ID_NUM];
+		uint8_t length = 0;
+		if (GetSw(SW_ID_A) == SW_PUSH) { text[length++] = 'A'; }
+		if (GetSw(SW_ID_B) == SW_PUSH) { text[length++] = 'B'; }
+		if (GetSw(SW_ID_C) == SW_PUSH) { text[length++] = 'C'; }
+		if (GetSw(SW_ID_D) == SW_PUSH) { text[length++] = 'D'; }
+		if (GetSw(SW_ID_POS_U) == SW_PUSH) { text[length++] = 'u'; }
+		if (GetSw(SW_ID_POS_D) == SW_PUSH) { text[length++] = 'd'; }
+		if (GetSw(SW_ID_POS_L) == SW_PUSH) { text[length++] = 'l'; }
+		if (GetSw(SW_ID_POS_R) == SW_PUSH) { text[length++] = 'r'; }
+		if (length > 0) {
+			SetTransparentSendData(text, length);
+			SetBM71Request(BM71_REQUEST_TRANSPARENT_UART_SERVICE_SEND_DATA);
+		}
+	}
 }
 
 /*

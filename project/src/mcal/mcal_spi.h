@@ -28,5 +28,6 @@
 void InitSpi(void);
 void SendSyncSpi(uint32_t data_address, uint32_t length);
 void SendAsyncSpi(uint32_t data_address, uint32_t length);
+void SendFixDataSyncSpi(uint8_t data, uint32_t length);
 
 #endif /* MCAL_SPI_H_ */
