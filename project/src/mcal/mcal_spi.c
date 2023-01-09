@@ -54,7 +54,7 @@ void InitSpi(void)
 
     /* SFR初期化 */
     SAU0EN = 1;         /* クロック供給許可 */
-    SPS0 = 0x0000;      /* CK00, CK01: 32MHz */
+    SPS0 = 0x0010;      /* CK00: 32MHz, CK01: 16MHz */
     SMR00 = SMR_CSI_CK00_INTR_FINISH;
     SCR00 = 0x8007;     /* タイプ1、MBSファースト、8ビット */
     SDR00 = 0x0000;     /* ボーレート: 32/2 MHz */

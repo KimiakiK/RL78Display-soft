@@ -1,9 +1,9 @@
 ﻿<CubeSuiteProject>
-  <ProductVersion>9.06.00.00</ProductVersion>
+  <ProductVersion>9.08.00.00</ProductVersion>
   <Class Guid="68f4a651-b9cd-473b-a595-b00447132ffa">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <FormatVersion>2.0</FormatVersion>
-      <FileVersion>9.6</FileVersion>
+      <FileVersion>9.8</FileVersion>
       <ProjectGuid>ed219d83-1917-415a-a24d-d0ec9c28e418</ProjectGuid>
       <ProjectItemGuid>a9d8466d-eef2-4c26-b061-fea80109e6a2</ProjectItemGuid>
       <FileCategoryGuid>e9958306-7722-4d1f-96ae-08ac2c62fb19</FileCategoryGuid>
@@ -39,6 +39,20 @@
       <Name>sys</Name>
       <Type>Category</Type>
       <ParentItem>f07dda73-94f5-4970-99d9-86c2da3125cb</ParentItem>
+    </Instance>
+    <Instance Guid="3056ecee-1efe-449b-bc4b-ec1489cc1911">
+      <Name>apl_ble.c</Name>
+      <Type>File</Type>
+      <RelativePath>src\apl\apl_ble.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>96fb99d5-9558-475e-8372-7be251b046a8</ParentItem>
+    </Instance>
+    <Instance Guid="e37991bb-d817-477e-8853-453b81fb14a9">
+      <Name>apl_ble.h</Name>
+      <Type>File</Type>
+      <RelativePath>src\apl\apl_ble.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>96fb99d5-9558-475e-8372-7be251b046a8</ParentItem>
     </Instance>
     <Instance Guid="9a67d15b-6746-48d8-867e-f091a8759699">
       <Name>apl_clock.c</Name>
@@ -81,6 +95,20 @@
       <RelativePath>src\apl\apl_display.h</RelativePath>
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>96fb99d5-9558-475e-8372-7be251b046a8</ParentItem>
+    </Instance>
+    <Instance Guid="918f7ed0-f042-4b16-ba08-b4daf6ac58af">
+      <Name>drv_bm71.c</Name>
+      <Type>File</Type>
+      <RelativePath>src\drv\drv_bm71.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>40af6ffe-c78f-4b87-901b-9bc0e9a736a3</ParentItem>
+    </Instance>
+    <Instance Guid="ef58d56d-923e-479d-a773-583b272f9e6e">
+      <Name>drv_bm71.h</Name>
+      <Type>File</Type>
+      <RelativePath>src\drv\drv_bm71.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>40af6ffe-c78f-4b87-901b-9bc0e9a736a3</ParentItem>
     </Instance>
     <Instance Guid="ed47b8fc-7c99-4410-b80f-3e739733c0e7">
       <Name>drv_light.c</Name>
@@ -264,6 +292,20 @@
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>93f36e5b-c035-4c4a-adcf-8e8c3799f5af</ParentItem>
     </Instance>
+    <Instance Guid="7e57e231-4749-4787-a7d1-59a6e9133ec4">
+      <Name>mcal_uart.c</Name>
+      <Type>File</Type>
+      <RelativePath>src\mcal\mcal_uart.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>93f36e5b-c035-4c4a-adcf-8e8c3799f5af</ParentItem>
+    </Instance>
+    <Instance Guid="fd453ec1-2f70-476b-8f74-e4ebf9bb744d">
+      <Name>mcal_uart.h</Name>
+      <Type>File</Type>
+      <RelativePath>src\mcal\mcal_uart.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>93f36e5b-c035-4c4a-adcf-8e8c3799f5af</ParentItem>
+    </Instance>
     <Instance Guid="741e6861-2cac-4b5d-ba67-f800337cc815">
       <Name>iodefine.h</Name>
       <Type>File</Type>
@@ -302,6 +344,7 @@
   </Class>
   <Class Guid="fb98844b-2c27-4275-9804-f6e63e204da0">
     <Instance Guid="fb98844b-2c27-4275-9804-f6e63e204da0">
+      <TypeOfStorageOfUserSettings>UserMtudFile</TypeOfStorageOfUserSettings>
       <UseStandardLicenseOnly>True</UseStandardLicenseOnly>
       <MemoCount>0</MemoCount>
     </Instance>
@@ -339,7 +382,7 @@
   </Class>
   <Class Guid="1159186b-b838-4741-8324-8293bf3d5c5f">
     <Instance Guid="1159186b-b838-4741-8324-8293bf3d5c5f">
-      <DataFormatVersion>1.3</DataFormatVersion>
+      <DataFormatVersion>1.4</DataFormatVersion>
       <BuildModeCount>1</BuildModeCount>
       <BuildMode0>RABlAGYAYQB1AGwAdABCAHUAaQBsAGQA</BuildMode0>
       <BatchBuildFlag0>False</BatchBuildFlag0>
@@ -366,30 +409,39 @@
       <SourceItemType9>CSource</SourceItemType9>
       <SourceItemGuid10>9e797d97-fd3a-4828-b512-3ddf6b286267</SourceItemGuid10>
       <SourceItemType10>CSource</SourceItemType10>
-      <SourceItemGuid11>a212795f-5646-4d22-a11b-59dcba0c06e5</SourceItemGuid11>
+      <SourceItemGuid11>6d49eed9-3a05-4782-9145-48d0ad1ef2fb</SourceItemGuid11>
       <SourceItemType11>CSource</SourceItemType11>
-      <SourceItemGuid12>e0798df6-99bf-409a-a785-efb822150c2d</SourceItemGuid12>
+      <SourceItemGuid12>a212795f-5646-4d22-a11b-59dcba0c06e5</SourceItemGuid12>
       <SourceItemType12>CSource</SourceItemType12>
-      <SourceItemGuid13>b03c44ef-9b44-4537-8104-814984183e64</SourceItemGuid13>
+      <SourceItemGuid13>e0798df6-99bf-409a-a785-efb822150c2d</SourceItemGuid13>
       <SourceItemType13>CSource</SourceItemType13>
-      <SourceItemGuid14>f0a1d71f-6ae3-40d0-9a18-50463cedf3df</SourceItemGuid14>
+      <SourceItemGuid14>b03c44ef-9b44-4537-8104-814984183e64</SourceItemGuid14>
       <SourceItemType14>CSource</SourceItemType14>
-      <SourceItemGuid15>7da5ddaa-5676-4527-bf80-4efcb6543519</SourceItemGuid15>
+      <SourceItemGuid15>f0a1d71f-6ae3-40d0-9a18-50463cedf3df</SourceItemGuid15>
       <SourceItemType15>CSource</SourceItemType15>
-      <SourceItemGuid16>57950a00-a676-48ca-bb6f-d735a1265f45</SourceItemGuid16>
-      <SourceItemType16>AsmSource</SourceItemType16>
-      <SourceItemGuid17>c565dfdb-dedc-43c5-977e-22bb4e48268d</SourceItemGuid17>
-      <SourceItemType17>AsmSource</SourceItemType17>
-      <SourceItemGuid18>6d49eed9-3a05-4782-9145-48d0ad1ef2fb</SourceItemGuid18>
-      <SourceItemType18>CSource</SourceItemType18>
-      <SourceItemCount>19</SourceItemCount>
+      <SourceItemGuid16>7e57e231-4749-4787-a7d1-59a6e9133ec4</SourceItemGuid16>
+      <SourceItemType16>CSource</SourceItemType16>
+      <SourceItemGuid17>7da5ddaa-5676-4527-bf80-4efcb6543519</SourceItemGuid17>
+      <SourceItemType17>CSource</SourceItemType17>
+      <SourceItemGuid18>57950a00-a676-48ca-bb6f-d735a1265f45</SourceItemGuid18>
+      <SourceItemType18>AsmSource</SourceItemType18>
+      <SourceItemGuid19>c565dfdb-dedc-43c5-977e-22bb4e48268d</SourceItemGuid19>
+      <SourceItemType19>AsmSource</SourceItemType19>
+      <SourceItemGuid20>918f7ed0-f042-4b16-ba08-b4daf6ac58af</SourceItemGuid20>
+      <SourceItemType20>CSource</SourceItemType20>
+      <SourceItemGuid21>3056ecee-1efe-449b-bc4b-ec1489cc1911</SourceItemGuid21>
+      <SourceItemType21>CSource</SourceItemType21>
+      <SourceItemCount>22</SourceItemCount>
       <LastDeviceChangedCounter>0</LastDeviceChangedCounter>
+      <LastDeviceNameOnPG>R5F100LL</LastDeviceNameOnPG>
+      <LastDeviceChangedCounterOnPG>0</LastDeviceChangedCounterOnPG>
     </Instance>
     <Instance Guid="6bb7060d-7e24-4135-bd9b-7db166417523">
       <AsmOptionI-DefaultValue />
       <BuildMode-DefaultValue>DefaultBuild</BuildMode-DefaultValue>
       <COptionOsize-DefaultValue>Default</COptionOsize-DefaultValue>
       <GeneralOptionCpu-DefaultValue>S2</GeneralOptionCpu-DefaultValue>
+      <GeneralOptionDspAsmFolder-DefaultValue />
       <GeneralOptionErrorFile-DefaultValue>False</GeneralOptionErrorFile-DefaultValue>
       <GeneralOptionInstalledFolder-DefaultValue />
       <GeneralOptionMirrorArea-DefaultValue>Maa0</GeneralOptionMirrorArea-DefaultValue>
@@ -403,6 +455,9 @@
       <OutputMessageFormat-DefaultValue>%TargetFiles%</OutputMessageFormat-DefaultValue>
       <AsmOptionISystem-DefaultValue />
       <COptionI-DefaultValue />
+      <CompilerDspAsmVersion-DefaultValue>
+
+0</CompilerDspAsmVersion-DefaultValue>
       <CompilerVersion-DefaultValue>
 
 0</CompilerVersion-DefaultValue>
@@ -439,7 +494,7 @@
       <LibOptionLibraryRuntime-DefaultValue>False</LibOptionLibraryRuntime-DefaultValue>
       <LinkOptionLibraryRuntime-DefaultValue>True</LinkOptionLibraryRuntime-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585794925554907379</TimeTagModified--0>
+      <TimeTagModified--0>-8585306791869403070</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <OutputMessageFormat-0>%TargetFiles%</OutputMessageFormat-0>
@@ -453,6 +508,9 @@
       <GeneralOptionNoWarningNum-0 />
       <GeneralOptionOutput-0>LoadModuleFile</GeneralOptionOutput-0>
       <GeneralOptionSimultaneousBuild-0>False</GeneralOptionSimultaneousBuild-0>
+      <CompilerDspAsmVersion-0>
+
+0</CompilerDspAsmVersion-0>
       <CompilerVersion-0>
 
 0</CompilerVersion-0>
@@ -467,7 +525,7 @@
       <GeneralOptionObjPath-0>%BuildModeName%</GeneralOptionObjPath-0>
       <TemporaryFolder-0 />
       <GeneralOptionOtherAdditionalOptions-0 />
-      <LastCompilerVersion-0>V1.10.00</LastCompilerVersion-0>
+      <LastCompilerVersion-0>V1.11.00</LastCompilerVersion-0>
     </Instance>
     <Instance Guid="86bebc9e-2f6f-4e72-83c8-8883e6cf6d33">
       <COptionAsmPath-DefaultValue>False</COptionAsmPath-DefaultValue>
@@ -686,6 +744,40 @@ src\sys
       <SMSAsmOptionOtherAdditionalOptions-0 />
       <SMSAsmOptionU-0 />
     </Instance>
+    <Instance Guid="a9166fef-6885-413b-b164-116661915fd2">
+      <DSPAsmOptionCore-DefaultValue>V2Core</DSPAsmOptionCore-DefaultValue>
+      <DSPAsmOptionI-DefaultValue />
+      <DSPAsmOptionNoDebugInfo-DefaultValue>True</DSPAsmOptionNoDebugInfo-DefaultValue>
+      <DSPAsmOptionOutputAsm-DefaultValue>False</DSPAsmOptionOutputAsm-DefaultValue>
+      <DSPAsmOptionPreDSPAssembleCommands-DefaultValue />
+      <DSPAsmOptionCodeSectionStart-DefaultValue />
+      <DSPAsmOptionOutputVerilog-DefaultValue>False</DSPAsmOptionOutputVerilog-DefaultValue>
+      <DSPAsmOptionPostDSPAssembleCommands-DefaultValue />
+      <DSPAsmOptionTextmacro-DefaultValue />
+      <DSPAsmOptionDataSectionStart-DefaultValue />
+      <DSPAsmOptionDefine-DefaultValue />
+      <DSPAsmOptionList-DefaultValue>False</DSPAsmOptionList-DefaultValue>
+      <DSPAsmOptionOtherAdditionalOptions-DefaultValue />
+      <DSPAsmOptionAllowTextMacroRedefine-DefaultValue>False</DSPAsmOptionAllowTextMacroRedefine-DefaultValue>
+      <DSPAsmOptionLabel-DefaultValue>False</DSPAsmOptionLabel-DefaultValue>
+      <IsLockedByUser>False</IsLockedByUser>
+      <TimeTagModified--0>-8585306791917971177</TimeTagModified--0>
+      <DSPAsmOptionCore-0>V2Core</DSPAsmOptionCore-0>
+      <DSPAsmOptionI-0 />
+      <DSPAsmOptionNoDebugInfo-0>True</DSPAsmOptionNoDebugInfo-0>
+      <DSPAsmOptionOutputAsm-0>False</DSPAsmOptionOutputAsm-0>
+      <DSPAsmOptionPreDSPAssembleCommands-0 />
+      <DSPAsmOptionCodeSectionStart-0 />
+      <DSPAsmOptionOutputVerilog-0>False</DSPAsmOptionOutputVerilog-0>
+      <DSPAsmOptionPostDSPAssembleCommands-0 />
+      <DSPAsmOptionTextmacro-0 />
+      <DSPAsmOptionDataSectionStart-0 />
+      <DSPAsmOptionDefine-0 />
+      <DSPAsmOptionList-0>False</DSPAsmOptionList-0>
+      <DSPAsmOptionOtherAdditionalOptions-0 />
+      <DSPAsmOptionAllowTextMacroRedefine-0>False</DSPAsmOptionAllowTextMacroRedefine-0>
+      <DSPAsmOptionLabel-0>False</DSPAsmOptionLabel-0>
+    </Instance>
     <Instance Guid="7ec2f657-357c-4418-bb9b-bbb98af0d62c">
       <LinkOptionAutoSectionLayout-DefaultValue>True</LinkOptionAutoSectionLayout-DefaultValue>
       <LinkOptionCpu-DefaultValue>False</LinkOptionCpu-DefaultValue>
@@ -882,11 +974,12 @@ src\sys
       <HexOptionFixRecordLengthAndAlign-DefaultValue>False</HexOptionFixRecordLengthAndAlign-DefaultValue>
       <HexOptionChangeMessageWarningNumber-DefaultValue />
       <HexOptionFixRecordLengthAndAlignValue-DefaultValue>1</HexOptionFixRecordLengthAndAlignValue-DefaultValue>
-      <HexOptionByteCount-DefaultValue>False</HexOptionByteCount-DefaultValue>
       <HexOptionChangeMessageError-DefaultValue>None</HexOptionChangeMessageError-DefaultValue>
+      <HexOptionFixRecordLengthAndAlignValue2-DefaultValue>1</HexOptionFixRecordLengthAndAlignValue2-DefaultValue>
       <HexOptionVerboseCrc-DefaultValue>False</HexOptionVerboseCrc-DefaultValue>
-      <HexOptionByteCountValue-DefaultValue>FF</HexOptionByteCountValue-DefaultValue>
+      <HexOptionByteCount-DefaultValue>False</HexOptionByteCount-DefaultValue>
       <HexOptionChangeMessageErrorNumber-DefaultValue />
+      <HexOptionByteCountValue-DefaultValue>FF</HexOptionByteCountValue-DefaultValue>
       <HexOptionEndRecord-DefaultValue>None</HexOptionEndRecord-DefaultValue>
       <HexOptionS9-DefaultValue>False</HexOptionS9-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
@@ -918,11 +1011,12 @@ src\sys
       <HexOptionFixRecordLengthAndAlign-0>False</HexOptionFixRecordLengthAndAlign-0>
       <HexOptionChangeMessageWarningNumber-0 />
       <HexOptionFixRecordLengthAndAlignValue-0>1</HexOptionFixRecordLengthAndAlignValue-0>
-      <HexOptionByteCount-0>False</HexOptionByteCount-0>
       <HexOptionChangeMessageError-0>None</HexOptionChangeMessageError-0>
+      <HexOptionFixRecordLengthAndAlignValue2-0>1</HexOptionFixRecordLengthAndAlignValue2-0>
       <HexOptionVerboseCrc-0>False</HexOptionVerboseCrc-0>
-      <HexOptionByteCountValue-0>FF</HexOptionByteCountValue-0>
+      <HexOptionByteCount-0>False</HexOptionByteCount-0>
       <HexOptionChangeMessageErrorNumber-0 />
+      <HexOptionByteCountValue-0>FF</HexOptionByteCountValue-0>
       <HexOptionEndRecord-0>None</HexOptionEndRecord-0>
       <HexOptionS9-0>False</HexOptionS9-0>
     </Instance>
@@ -1007,6 +1101,7 @@ src\sys
       <GeneratorOptionUitron-DefaultValue>False</GeneratorOptionUitron-DefaultValue>
       <GeneratorOptionOutputMISRAC-DefaultValue>False</GeneratorOptionOutputMISRAC-DefaultValue>
       <GeneratorOptionCa78k0r-DefaultValue>False</GeneratorOptionCa78k0r-DefaultValue>
+      <GeneratorOptionIncludeFileForFAA-DefaultValue>True</GeneratorOptionIncludeFileForFAA-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
       <TimeTagModified--0>-8585794925554877621</TimeTagModified--0>
       <GeneratorOptionUpdateIO-0>None</GeneratorOptionUpdateIO-0>
@@ -1017,6 +1112,7 @@ src\sys
       <GeneratorOptionUitron-0>False</GeneratorOptionUitron-0>
       <GeneratorOptionOutputMISRAC-0>False</GeneratorOptionOutputMISRAC-0>
       <GeneratorOptionCa78k0r-0>False</GeneratorOptionCa78k0r-0>
+      <GeneratorOptionIncludeFileForFAA-0>True</GeneratorOptionIncludeFileForFAA-0>
     </Instance>
     <Instance Guid="5af7ae42-d3bb-4a4b-9b80-bde76b888a5d">
       <ItemAddTime>637643809023542184</ItemAddTime>
@@ -1166,6 +1262,30 @@ src\sys
       <ItemAddTime>637644053040945922</ItemAddTime>
       <ItemAddTimeCount>1</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="7e57e231-4749-4787-a7d1-59a6e9133ec4">
+      <ItemAddTime>638065672842709023</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="fd453ec1-2f70-476b-8f74-e4ebf9bb744d">
+      <ItemAddTime>638065672842709023</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="918f7ed0-f042-4b16-ba08-b4daf6ac58af">
+      <ItemAddTime>638088138284837240</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="ef58d56d-923e-479d-a773-583b272f9e6e">
+      <ItemAddTime>638088138284837240</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="3056ecee-1efe-449b-bc4b-ec1489cc1911">
+      <ItemAddTime>638088141153191694</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="e37991bb-d817-477e-8853-453b81fb14a9">
+      <ItemAddTime>638088141153191694</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="f782db2c-1c42-4ca1-af6a-53a3a5067217">
       <TimeTagModified-SourceItem0--0>-8585728551831389842</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -1211,7 +1331,7 @@ src\sys
       <SourceItem10-IsLockedByUser>False</SourceItem10-IsLockedByUser>
       <SourceItem10-BuildingTarget-0>True</SourceItem10-BuildingTarget-0>
       <SourceItem10-IndividualCompileOption-0>False</SourceItem10-IndividualCompileOption-0>
-      <TimeTagModified-SourceItem11--0>-8585728551831233624</TimeTagModified-SourceItem11--0>
+      <TimeTagModified-SourceItem11--0>-8585728307813829886</TimeTagModified-SourceItem11--0>
       <SourceItem11-IsLockedByUser>False</SourceItem11-IsLockedByUser>
       <SourceItem11-BuildingTarget-0>True</SourceItem11-BuildingTarget-0>
       <SourceItem11-IndividualCompileOption-0>False</SourceItem11-IndividualCompileOption-0>
@@ -1231,20 +1351,32 @@ src\sys
       <SourceItem15-IsLockedByUser>False</SourceItem15-IsLockedByUser>
       <SourceItem15-BuildingTarget-0>True</SourceItem15-BuildingTarget-0>
       <SourceItem15-IndividualCompileOption-0>False</SourceItem15-IndividualCompileOption-0>
-      <TimeTagModified-SourceItem18--0>-8585728307813829886</TimeTagModified-SourceItem18--0>
-      <SourceItem18-IsLockedByUser>False</SourceItem18-IsLockedByUser>
-      <SourceItem18-BuildingTarget-0>True</SourceItem18-BuildingTarget-0>
-      <SourceItem18-IndividualCompileOption-0>False</SourceItem18-IndividualCompileOption-0>
-    </Instance>
-    <Instance Guid="0b7e78c3-aadd-45ee-9f9d-ffac6141eeb2">
-      <TimeTagModified-SourceItem16--0>-8585728551831233624</TimeTagModified-SourceItem16--0>
+      <TimeTagModified-SourceItem16--0>-8585306688012066785</TimeTagModified-SourceItem16--0>
       <SourceItem16-IsLockedByUser>False</SourceItem16-IsLockedByUser>
       <SourceItem16-BuildingTarget-0>True</SourceItem16-BuildingTarget-0>
-      <SourceItem16-IndividualAssembleOption-0>False</SourceItem16-IndividualAssembleOption-0>
+      <SourceItem16-IndividualCompileOption-0>False</SourceItem16-IndividualCompileOption-0>
       <TimeTagModified-SourceItem17--0>-8585728551831233624</TimeTagModified-SourceItem17--0>
       <SourceItem17-IsLockedByUser>False</SourceItem17-IsLockedByUser>
       <SourceItem17-BuildingTarget-0>True</SourceItem17-BuildingTarget-0>
-      <SourceItem17-IndividualAssembleOption-0>False</SourceItem17-IndividualAssembleOption-0>
+      <SourceItem17-IndividualCompileOption-0>False</SourceItem17-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem20--0>-8585284222569938568</TimeTagModified-SourceItem20--0>
+      <SourceItem20-IsLockedByUser>False</SourceItem20-IsLockedByUser>
+      <SourceItem20-BuildingTarget-0>True</SourceItem20-BuildingTarget-0>
+      <SourceItem20-IndividualCompileOption-0>False</SourceItem20-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem21--0>-8585284219701584114</TimeTagModified-SourceItem21--0>
+      <SourceItem21-IsLockedByUser>False</SourceItem21-IsLockedByUser>
+      <SourceItem21-BuildingTarget-0>True</SourceItem21-BuildingTarget-0>
+      <SourceItem21-IndividualCompileOption-0>False</SourceItem21-IndividualCompileOption-0>
+    </Instance>
+    <Instance Guid="0b7e78c3-aadd-45ee-9f9d-ffac6141eeb2">
+      <TimeTagModified-SourceItem18--0>-8585728551831233624</TimeTagModified-SourceItem18--0>
+      <SourceItem18-IsLockedByUser>False</SourceItem18-IsLockedByUser>
+      <SourceItem18-BuildingTarget-0>True</SourceItem18-BuildingTarget-0>
+      <SourceItem18-IndividualAssembleOption-0>False</SourceItem18-IndividualAssembleOption-0>
+      <TimeTagModified-SourceItem19--0>-8585728551831233624</TimeTagModified-SourceItem19--0>
+      <SourceItem19-IsLockedByUser>False</SourceItem19-IsLockedByUser>
+      <SourceItem19-BuildingTarget-0>True</SourceItem19-BuildingTarget-0>
+      <SourceItem19-IndividualAssembleOption-0>False</SourceItem19-IndividualAssembleOption-0>
     </Instance>
   </Class>
   <Class Guid="44fa27c9-0aa0-4297-bd3b-2c5c5bdb8881">
@@ -1891,6 +2023,8 @@ src\sys
       <DebuggerProperty-DownloadProperty-DebugInformation-MainSymbol>XwBtAGEAaQBuAA==</DebuggerProperty-DownloadProperty-DebugInformation-MainSymbol>
       <DebuggerProperty-DownloadProperty-DebugInformation-MaxLoaderMemorySize>500</DebuggerProperty-DownloadProperty-DebugInformation-MaxLoaderMemorySize>
       <DebuggerProperty-DownloadProperty-None-DefaultDownloadItemSupported>True</DebuggerProperty-DownloadProperty-None-DefaultDownloadItemSupported>
+      <DebuggerProperty-DownloadProperty-Download-FaaCodeSectionName />
+      <DebuggerProperty-DownloadProperty-Download-FaaDodeSectionName />
       <DebuggerProperty-OptionalProperty-Register-UpdateDisplayInExecutionForPC>No</DebuggerProperty-OptionalProperty-Register-UpdateDisplayInExecutionForPC>
       <DebuggerProperty-OptionalProperty-Register-UpdateIntervalForPC>500</DebuggerProperty-OptionalProperty-Register-UpdateIntervalForPC>
       <DebuggerProperty-OptionalProperty-Memory-VerifyCheck>Yes</DebuggerProperty-OptionalProperty-Memory-VerifyCheck>
@@ -1919,6 +2053,7 @@ src\sys
       <DebuggerProperty-HookProperty-HookTransaction-Broke-Length>0</DebuggerProperty-HookProperty-HookTransaction-Broke-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Connected-Length>0</DebuggerProperty-HookProperty-HookTransaction-Connected-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>0</DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>
+      <DebuggerProperty-EssentialProperty-EmulatorConnect-SerialNumber />
     </Instance>
   </Class>
   <Class Guid="9f7af90c-526c-4f28-af29-524df208b9e0">
@@ -2216,7 +2351,7 @@ src\sys
     &lt;PIOR4Value Name="PIOR4Value" Text="0" /&gt;
     &lt;PIOR5Value Name="PIOR5Value" Text="0" /&gt;
     &lt;ProjectName Name="PrjName" Text="project" /&gt;
-    &lt;ProjectPath Name="PrjPath" Text="C:\work\RL78\RL78Display-soft\project" /&gt;
+    &lt;ProjectPath Name="PrjPath" Text="C:\work\RL78\RL78Display\project" /&gt;
     &lt;ProjectKind Name="PrjKind" Text="Project78K0REmpty" /&gt;
     &lt;DeviceName Name="DeviceName" Fixed="" Text="RL78G13" /&gt;
     &lt;MCUName Name="MCUName" Text="RL78G13_64pin" /&gt;

@@ -55,4 +55,8 @@ dkms.conf
 *.mtud
 *.abs
 *.clnk
+*.rcpe
 SmartManual Docs/
+
+# VSCode
+.vscode/
