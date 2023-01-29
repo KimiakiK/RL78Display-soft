@@ -108,7 +108,7 @@ void TftClear(void)
     setArea(0, 0, TFT_WIDTH, TFT_HEIGHT);
     sendCommand((uint32_t)((uint8_t __far *)command_RAMWR), sizeof(command_RAMWR));
     WritePin(PIN_ID_TFT_DC, PIN_DC_DATA);
-    SendFixDataSyncSpi(0x00,  (uint32_t)TFT_WIDTH * TFT_HEIGHT * 2);
+    SendFixDataSyncSpi(0x00,  (uint32_t)TFT_WIDTH * TFT_HEIGHT * 2, SEND_SYNC);
 }
 
 /*
@@ -146,7 +146,7 @@ void TftOff(void)
 void sendCommand(uint32_t data_address, uint32_t length)
 {
     WritePin(PIN_ID_TFT_DC, PIN_DC_COMMAND);
-    SendSyncSpi(data_address, length);
+    SendDataSpi(data_address, length, SEND_SYNC);
 }
 
 /*
@@ -158,7 +158,7 @@ void sendCommand(uint32_t data_address, uint32_t length)
 void sendData(uint32_t data_address, uint32_t length)
 {
     WritePin(PIN_ID_TFT_DC, PIN_DC_DATA);
-    SendSyncSpi(data_address, length);
+    SendDataSpi(data_address, length, SEND_SYNC);
 }
 
 /*

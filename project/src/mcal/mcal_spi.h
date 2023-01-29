@@ -17,6 +17,11 @@
 
 /********** Enum **********/
 
+typedef enum {
+	SEND_SYNC = 0,
+	SEND_ASYNC
+} send_mode_t;
+
 /********** Type **********/
 
 /********** Constant **********/
@@ -26,8 +31,7 @@
 /********** Function Prototype **********/
 
 void InitSpi(void);
-void SendSyncSpi(uint32_t data_address, uint32_t length);
-void SendAsyncSpi(uint32_t data_address, uint32_t length);
-void SendFixDataSyncSpi(uint8_t data, uint32_t length);
+void SendDataSpi(uint32_t data_address, uint32_t length, send_mode_t mode);
+void SendFixDataSyncSpi(uint8_t data, uint32_t length, send_mode_t mode);
 
 #endif /* MCAL_SPI_H_ */

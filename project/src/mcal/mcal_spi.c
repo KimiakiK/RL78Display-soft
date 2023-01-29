@@ -37,6 +37,7 @@ static uint8_t spi_state;
 static uint32_t send_data_address;
 static uint32_t send_length;
 static uint8_t send_address_increment;
+static uint8_t send_fix_data;
 
 /********** Function Prototype **********/
 
@@ -57,6 +58,7 @@ void InitSpi(void)
     send_data_address = 0;
     send_length = 0;
     send_address_increment = SEND_ADDRESS_INCREMENT_ON;
+    send_fix_data = 0;
 
     /* SFR初期化 */
     SAU0EN = 1;         /* クロック供給許可 */
@@ -75,43 +77,38 @@ void InitSpi(void)
 }
 
 /*
- * Function: SPI同期送信
- * Argument: データ先頭アドレス、データ長
+ * Function: SPIデータ送信
+ * Argument: データ先頭アドレス、データ長、送信モード(同期/非同期)
  * Return: 無し
- * Note: 指定データを送信し、送信完了まで待つ
+ * Note: 指定データを送信
  */
-void SendSyncSpi(uint32_t data_address, uint32_t length)
+void SendDataSpi(uint32_t data_address, uint32_t length, send_mode_t mode)
 {
     send_address_increment = SEND_ADDRESS_INCREMENT_ON;
     sendSpi(data_address, length);
 
-    while (spi_state == SPI_SEND) { }
+    if (mode == SEND_SYNC) {
+        /* 同期送信の場合は送信終了まで待機 */
+        while (spi_state == SPI_SEND) { }
+    }
 }
 
 /*
- * Function: SPI非同期送信
- * Argument: データ先頭アドレス、データ長
+ * Function: SPI固定データ送信
+ * Argument: 送信データ、データ長、送信モード(同期/非同期)
  * Return: 無し
- * Note: 指定データを送信し、送信完了まで待たない
+ * Note: 固定データを送信
  */
-void SendAsyncSpi(uint32_t data_address, uint32_t length)
+void SendFixDataSyncSpi(uint8_t data, uint32_t length, send_mode_t mode)
 {
-    send_address_increment = SEND_ADDRESS_INCREMENT_ON;
-    sendSpi(data_address, length);
-}
-
-/*
- * Function: SPI固定データ同期送信
- * Argument: 送信データ、データ長
- * Return: 無し
- * Note: 固定データを送信し、送信完了まで待つ
- */
-void SendFixDataSyncSpi(uint8_t data, uint32_t length)
-{
+    send_fix_data = data;
     send_address_increment = SEND_ADDRESS_INCREMENT_OFF;
-    sendSpi((uint32_t)((uint8_t __far *)&data), length);
+    sendSpi((uint32_t)((uint8_t __far *)&send_fix_data), length);
 
-    while (spi_state == SPI_SEND) { }
+    if (mode == SEND_SYNC) {
+        /* 同期送信の場合は送信終了まで待機 */
+        while (spi_state == SPI_SEND) { }
+    }
 }
 
 #pragma interrupt IntrSpi(vect=INTCSI00)
@@ -124,6 +121,8 @@ void SendFixDataSyncSpi(uint8_t data, uint32_t length)
 void IntrSpi(void)
 {
     send_length --;
+
+    /* 送信データのアドレスインクリメント判定 */
     if (send_address_increment == SEND_ADDRESS_INCREMENT_ON) {
         send_data_address ++;
     }
@@ -133,7 +132,7 @@ void IntrSpi(void)
         spi_state = SPI_IDLE;
     } else {
         if (send_length == 1) {
-            /* 送信データが最後の１つの場合は転送完了割り込み */
+            /* 送信データが最後の１つの場合は次回を転送完了割り込み */
             SMR00 = SMR_CSI_CK00_INTR_FINISH;
         }
         /* 次の送信データ設定 */
@@ -154,10 +153,10 @@ void sendSpi(uint32_t data_address, uint32_t length)
     send_length = length;
 
     if (send_length > 1) {
-        /* 送信データが複数ある場合はバッファ空き割り込み */
+        /* 送信データが複数ある場合は次回をバッファ空き割り込み */
         SMR00 = SMR_CSI_CK00_INTR_EMPTY;
     } else {
-        /* 送信データが１つの場合は転送完了割り込み */
+        /* 送信データが１つの場合は次回を転送完了割り込み */
         SMR00 = SMR_CSI_CK00_INTR_FINISH;
     }
 
