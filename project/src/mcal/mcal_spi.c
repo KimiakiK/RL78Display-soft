@@ -38,6 +38,7 @@ static uint32_t send_data_address;
 static uint32_t send_length;
 static uint8_t send_address_increment;
 static uint8_t send_fix_data;
+static send_mode_t send_mode;
 
 /********** Function Prototype **********/
 
@@ -59,6 +60,7 @@ void InitSpi(void)
     send_length = 0;
     send_address_increment = SEND_ADDRESS_INCREMENT_ON;
     send_fix_data = 0;
+    send_mode = SEND_SYNC;
 
     /* SFR初期化 */
     SAU0EN = 1;         /* クロック供給許可 */
@@ -84,6 +86,7 @@ void InitSpi(void)
  */
 void SendDataSpi(uint32_t data_address, uint32_t length, send_mode_t mode)
 {
+    send_mode = mode;
     send_address_increment = SEND_ADDRESS_INCREMENT_ON;
     sendSpi(data_address, length);
 
@@ -101,6 +104,7 @@ void SendDataSpi(uint32_t data_address, uint32_t length, send_mode_t mode)
  */
 void SendFixDataSyncSpi(uint8_t data, uint32_t length, send_mode_t mode)
 {
+    send_mode = mode;
     send_fix_data = data;
     send_address_increment = SEND_ADDRESS_INCREMENT_OFF;
     sendSpi((uint32_t)((uint8_t __far *)&send_fix_data), length);
@@ -130,6 +134,10 @@ void IntrSpi(void)
     if (send_length == 0) {
         /* 全データ送信完了 */
         spi_state = SPI_IDLE;
+        /* 非同期送信の場合はコールバック呼び出し */
+        if (send_mode == SEND_ASYNC) {
+            EndCallbackSpi();
+        }
     } else {
         if (send_length == 1) {
             /* 送信データが最後の１つの場合は次回を転送完了割り込み */
