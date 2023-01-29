@@ -32,7 +32,28 @@ const image_t image[IMAGE_ID_NUM] = {
     /* IMAGE_ID_SW_OFF */
     { 0x25200, 416, 52},
     /* IMAGE_ID_SW_ON */
-    { 0x1A900, 416, 52}
+    { 0x1A900, 416, 52},
+    /* IMAGE_ID_BLOCK */
+    { 0x19C00, 10, 180}
+};
+
+const image_t image_block[BLOCK_ID_NUM] = {
+    { 0x19C00, 10, 10},
+    { 0x19CC8, 10, 10},
+    { 0x19D90, 10, 10},
+    { 0x19E58, 10, 10},
+    { 0x19F20, 10, 10},
+    { 0x19FE8, 10, 10},
+    { 0x1A0B0, 10, 10},
+    { 0x1A178, 10, 10},
+    { 0x1A240, 10, 10},
+    { 0x1A308, 10, 10},
+    { 0x1A3D0, 10, 10},
+    { 0x1A498, 10, 10},
+    { 0x1A560, 10, 10},
+    { 0x1A628, 10, 10},
+    { 0x1A6F0, 10, 10},
+    { 0x1A7B8, 10, 10}
 };
 
 const sprite_t sw_off_sprite[8] = {

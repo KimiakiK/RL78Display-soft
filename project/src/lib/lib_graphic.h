@@ -24,8 +24,29 @@ typedef enum image_id_enum {
     IMAGE_ID_FONT_50PX,
     IMAGE_ID_SW_OFF,
     IMAGE_ID_SW_ON,
+    IMAGE_ID_BLOCK,
     IMAGE_ID_NUM
 } image_id_t;
+
+typedef enum block_id_enum {
+    BLOCK_ID_BACK = 0,
+    BLOCK_ID_HARD,
+    BLOCK_ID_I,
+    BLOCK_ID_J,
+    BLOCK_ID_L,
+    BLOCK_ID_S,
+    BLOCK_ID_Z,
+    BLOCK_ID_O,
+    BLOCK_ID_T,
+    BLOCK_ID_I_OFF,
+    BLOCK_ID_J_OFF,
+    BLOCK_ID_L_OFF,
+    BLOCK_ID_S_OFF,
+    BLOCK_ID_Z_OFF,
+    BLOCK_ID_O_OFF,
+    BLOCK_ID_T_OFF,
+    BLOCK_ID_NUM
+} block_id_t;
 
 /********** Type **********/
 
@@ -46,6 +67,7 @@ typedef struct sprite_struct {
 /********** Constant **********/
 
 extern const image_t image[IMAGE_ID_NUM];
+extern const image_t image_block[BLOCK_ID_NUM];
 extern const sprite_t sw_off_sprite[8];
 extern const sprite_t sw_on_sprite[8];
 

@@ -18,6 +18,7 @@
 #include "apl_controller.h"
 #include "apl_display.h"
 #include "apl_ble.h"
+#include "apl_puzzle.h"
 
 /********** Define **********/
 
@@ -38,6 +39,7 @@ typedef enum display_id_type {
     DISPLAY_ID_CLOCK,
     DISPLAY_ID_CONTROLLER,
     DISPLAY_ID_BLE,
+    DISPLAY_ID_PUZZLE,
     DISPLAY_ID_NUM
 } display_id_t;
 
@@ -230,6 +232,10 @@ void processDisplayId(void)
         /* BLE通信表示 */
         DrawBle();
         break;
+    case DISPLAY_ID_PUZZLE:
+        /* パズル表示 */
+        DrawPuzzle();
+        break;
     default:
         /* 処理なし */
         break;
@@ -258,6 +264,10 @@ void displayBackground(void)
     case DISPLAY_ID_BLE:
         TftClear();
         InitDrawBle();
+        break;
+    case DISPLAY_ID_PUZZLE:
+        TftClear();
+        DrawPuzzleInit();
         break;
     default:
         /* 処理なし */

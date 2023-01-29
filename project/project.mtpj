@@ -96,6 +96,20 @@
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>96fb99d5-9558-475e-8372-7be251b046a8</ParentItem>
     </Instance>
+    <Instance Guid="eb047d73-6ea0-424c-bb75-8221a9aa115b">
+      <Name>apl_puzzle.c</Name>
+      <Type>File</Type>
+      <RelativePath>src\apl\apl_puzzle.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>96fb99d5-9558-475e-8372-7be251b046a8</ParentItem>
+    </Instance>
+    <Instance Guid="95b0fdbb-d848-46c4-a841-a5281991aa86">
+      <Name>apl_puzzle.h</Name>
+      <Type>File</Type>
+      <RelativePath>src\apl\apl_puzzle.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>96fb99d5-9558-475e-8372-7be251b046a8</ParentItem>
+    </Instance>
     <Instance Guid="918f7ed0-f042-4b16-ba08-b4daf6ac58af">
       <Name>drv_bm71.c</Name>
       <Type>File</Type>
@@ -431,7 +445,9 @@
       <SourceItemType20>AsmSource</SourceItemType20>
       <SourceItemGuid21>c565dfdb-dedc-43c5-977e-22bb4e48268d</SourceItemGuid21>
       <SourceItemType21>AsmSource</SourceItemType21>
-      <SourceItemCount>22</SourceItemCount>
+      <SourceItemGuid22>eb047d73-6ea0-424c-bb75-8221a9aa115b</SourceItemGuid22>
+      <SourceItemType22>CSource</SourceItemType22>
+      <SourceItemCount>23</SourceItemCount>
       <LastDeviceChangedCounter>0</LastDeviceChangedCounter>
       <LastDeviceNameOnPG>R5F100LL</LastDeviceNameOnPG>
       <LastDeviceChangedCounterOnPG>0</LastDeviceChangedCounterOnPG>
@@ -1286,6 +1302,14 @@ src\sys
       <ItemAddTime>638088141153191694</ItemAddTime>
       <ItemAddTimeCount>1</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="eb047d73-6ea0-424c-bb75-8221a9aa115b">
+      <ItemAddTime>638106201925816083</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="95b0fdbb-d848-46c4-a841-a5281991aa86">
+      <ItemAddTime>638106201925816083</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="f782db2c-1c42-4ca1-af6a-53a3a5067217">
       <TimeTagModified-SourceItem0--0>-8585284219701584114</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -1367,6 +1391,10 @@ src\sys
       <SourceItem19-IsLockedByUser>False</SourceItem19-IsLockedByUser>
       <SourceItem19-BuildingTarget-0>True</SourceItem19-BuildingTarget-0>
       <SourceItem19-IndividualCompileOption-0>False</SourceItem19-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem22--0>-8585266158928959725</TimeTagModified-SourceItem22--0>
+      <SourceItem22-IsLockedByUser>False</SourceItem22-IsLockedByUser>
+      <SourceItem22-BuildingTarget-0>True</SourceItem22-BuildingTarget-0>
+      <SourceItem22-IndividualCompileOption-0>False</SourceItem22-IndividualCompileOption-0>
     </Instance>
     <Instance Guid="0b7e78c3-aadd-45ee-9f9d-ffac6141eeb2">
       <TimeTagModified-SourceItem20--0>-8585728551831233624</TimeTagModified-SourceItem20--0>
@@ -1885,7 +1913,7 @@ src\sys
       <DebuggerProperty-EssentialProperty-Clock-SubClockForOCD>0</DebuggerProperty-EssentialProperty-Clock-SubClockForOCD>
       <DebuggerProperty-EssentialProperty-Clock-MonitorClock>System</DebuggerProperty-EssentialProperty-Clock-MonitorClock>
       <DebuggerProperty-EssentialProperty-TargetConnect-TargetSupplyPower>No</DebuggerProperty-EssentialProperty-TargetConnect-TargetSupplyPower>
-      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-Length>8</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-Length>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-Length>9</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-Length>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DebuggerGuid />
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DefaultItemProjectGuid>ed219d83-1917-415a-a24d-d0ec9c28e418</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DefaultItemProjectGuid>
@@ -2014,6 +2042,22 @@ src\sys
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem7-PirodOffset>0</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem7-PirodOffset>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem7-PidOffset>0</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem7-PidOffset>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem7-GenerateInformationForInputCompletion>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem7-GenerateInformationForInputCompletion>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-DebuggerGuid />
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-IsDefaultItem>False</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-IsDefaultItem>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-DefaultItemProjectGuid>00000000-0000-0000-0000-000000000000</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-DefaultItemProjectGuid>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-FileName>resource\block.bin</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-FileName>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-FileType>BinaryFile</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-FileType>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-CompilerType>Auto</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-CompilerType>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-Offset>0</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-Offset>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-StartAddress>105472</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-StartAddress>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-ObjectDownload>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-ObjectDownload>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-SymbolDownload>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-SymbolDownload>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-UsePicPidOffset>False</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-UsePicPidOffset>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-UsePicPirodPidOffset>False</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-UsePicPirodPidOffset>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-PicOffset>0</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-PicOffset>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-PirodOffset>0</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-PirodOffset>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-PidOffset>0</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-PidOffset>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-GenerateInformationForInputCompletion>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem8-GenerateInformationForInputCompletion>
       <DebuggerProperty-DownloadProperty-DebugInformation-CpuReset>True</DebuggerProperty-DownloadProperty-DebugInformation-CpuReset>
       <DebuggerProperty-DownloadProperty-Download-DownloadMode>SpeedPriority</DebuggerProperty-DownloadProperty-Download-DownloadMode>
       <DebuggerProperty-DownloadProperty-Download-MonitorOverwrite>Yes</DebuggerProperty-DownloadProperty-Download-MonitorOverwrite>
