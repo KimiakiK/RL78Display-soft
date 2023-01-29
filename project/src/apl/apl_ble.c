@@ -40,6 +40,7 @@ static uint8_t text_pos_y;
 /********** Function Prototype **********/
 
 void transitionBleState(void);
+void drawData(uint8_t data);
 
 /********** Function **********/
 
@@ -78,6 +79,24 @@ void InitDrawBle(void)
 {
 	text_pos_x = 0;
 	text_pos_y = 0;
+	drawData('B');
+	drawData('L');
+	drawData('E');
+	drawData(' ');
+	drawData('c');
+	drawData('o');
+	drawData('m');
+	drawData('m');
+	drawData('u');
+	drawData('n');
+	drawData('i');
+	drawData('c');
+	drawData('a');
+	drawData('t');
+	drawData('i');
+	drawData('o');
+	drawData('n');
+	drawData('\n');
 }
 
 /*
@@ -94,20 +113,7 @@ void DrawBle(void)
 	result = GetTransparentReceiveData(&data);
 
 	if (result == BM71_RESULT_OK) {
-		if (data == '\n') {
-			text_pos_x = 0;
-			text_pos_y++;
-		} else {
-			DrawAscii(data, text_pos_x * 10, text_pos_y * 20);
-			text_pos_x++;
-		}
-		if (text_pos_x >= 24) {
-			text_pos_x = 0;
-			text_pos_y++;
-		}
-		if (text_pos_y >= 12) {
-			text_pos_y = 0;
-		}
+		drawData(data);
 	}
 
 	if (ble_state == BLE_STATE_CONNECTED) {
@@ -177,5 +183,29 @@ void transitionBleState(void)
 	default:
 		/* 処理なし */
 		break;
+	}
+}
+
+/*
+ * Function: 文字描画
+ * Argument: 文字データ
+ * Return  : なし
+ * Note    : なし
+ */
+void drawData(uint8_t data)
+{
+	if (data == '\n') {
+		text_pos_x = 0;
+		text_pos_y++;
+	} else {
+		DrawAscii(data, text_pos_x * 10, text_pos_y * 20);
+		text_pos_x++;
+	}
+	if (text_pos_x >= 24) {
+		text_pos_x = 0;
+		text_pos_y++;
+	}
+	if (text_pos_y >= 12) {
+		text_pos_y = 0;
 	}
 }

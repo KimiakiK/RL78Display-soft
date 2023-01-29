@@ -111,7 +111,8 @@ void transitionDisplayState(void)
         }
         break;
     case DISPLAY_STATE_ON:
-        if (GetNoInputTime() > 20000) {
+        if ((GetNoInputTime() > 20000)
+         && (display_id != DISPLAY_ID_BLE)) { /* BLE画面は常時表示 */
             /* 無操作一定時間経過で画面表示停止 */
             TftOff();
             display_state = DISPLAY_STATE_OFF;
