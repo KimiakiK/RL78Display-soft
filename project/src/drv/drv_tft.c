@@ -16,7 +16,7 @@
 
 /********** Define **********/
 
-#define DRAW_JOB_MAX    (256)
+#define DRAW_JOB_MAX    (300)
 
 #define SPECIAL_DATA_DRAW_BLACK     (0)
 #define SPECIAL_DATA_TFT_OFF        (1)
@@ -143,6 +143,17 @@ void DrawTft(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t data)
 void TftClear(void)
 {
     addDrawJob(0, 0, TFT_WIDTH, TFT_HEIGHT, SPECIAL_DATA_DRAW_BLACK);
+}
+
+/*
+ * Function: TFT表示矩形領域クリア
+ * Argument: 横位置、縦位置、横幅、縦幅
+ * Return: 無し
+ * Note: TFT表示を黒色で矩形領域クリア
+ */
+void TftClearRect(uint8_t x, uint8_t y, uint8_t w, uint8_t h)
+{
+    addDrawJob(x, y, w, h, SPECIAL_DATA_DRAW_BLACK);
 }
 
 /*
