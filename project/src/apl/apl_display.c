@@ -59,6 +59,8 @@ void processDisplayState(void);
 void transitionDisplayId(void);
 void processDisplayId(void);
 void displayBackground(void);
+display_transition_enable_t getDisplayTransitonEnable(void);
+display_sleep_enable_t getDisplaySleepEnable(void);
 
 /********** Function **********/
 
@@ -94,6 +96,8 @@ void MainDisplay(void)
  */
 void transitionDisplayState(void)
 {
+    display_sleep_enable_t display_sleep = getDisplaySleepEnable();
+
     switch (display_state) {
     case DISPLAY_STATE_INIT:
         /* 無条件で画面背景を描画して表示開始 */
@@ -113,8 +117,8 @@ void transitionDisplayState(void)
         }
         break;
     case DISPLAY_STATE_ON:
-        if ((GetNoInputTime() > 20000)
-         && (display_id != DISPLAY_ID_BLE)) { /* BLE画面は常時表示 */
+        if ((display_sleep == DISPLAY_SLEEP_ENABLE)
+         && (GetNoInputTime() > 20000)) {
             /* 無操作一定時間経過で画面表示停止 */
             TftOff();
             display_state = DISPLAY_STATE_OFF;
@@ -134,6 +138,8 @@ void transitionDisplayState(void)
  */
 void processDisplayState(void)
 {
+    display_transition_enable_t display_transition = getDisplayTransitonEnable();
+
     switch (display_state) {
     case DISPLAY_STATE_INIT:
         /* 処理なし */
@@ -143,7 +149,9 @@ void processDisplayState(void)
         break;
     case DISPLAY_STATE_ON:
         /* 画面遷移 */
-        transitionDisplayId();
+        if (display_transition == DISPLAY_TRANSITION_ENABLE) {
+            transitionDisplayId();
+        }
         /* 画面処理 */
         processDisplayId();
         break;
@@ -162,12 +170,14 @@ void processDisplayState(void)
 void transitionDisplayId(void)
 {
     display_id_t old_display_id;
-    sw_state_t sw_state;
+    sw_state_t sw_l, sw_r;
 
     old_display_id = display_id;
 
-    sw_state = GetSw(SW_ID_L);
-    if (sw_state == SW_PUSH) {
+    sw_l = GetSw(SW_ID_L);
+    sw_r = GetSw(SW_ID_R);
+
+    if (sw_l == SW_PUSH && sw_r == SW_OFF) {
         if (display_id == (display_id_t)0) {
             display_id = (display_id_t)(DISPLAY_ID_NUM - 1);
         } else {
@@ -175,8 +185,7 @@ void transitionDisplayId(void)
         }
     }
     
-    sw_state = GetSw(SW_ID_R);
-    if (sw_state == SW_PUSH) {
+    if (sw_r == SW_PUSH && sw_l == SW_OFF) {
         if (display_id == (display_id_t)(DISPLAY_ID_NUM - 1)) {
             display_id = (display_id_t)0;
         } else {
@@ -273,4 +282,68 @@ void displayBackground(void)
         /* 処理なし */
         break;
     }
+}
+
+/*
+ * Function: 画面遷移許可取得
+ * Argument: 無し
+ * Return: 画面遷移許可
+ * Note: 各画面の画面遷移許可を取得
+ */
+display_transition_enable_t getDisplayTransitonEnable(void)
+{
+    display_transition_enable_t display_transition = DISPLAY_TRANSITION_DISABLE;
+    switch (display_id) {
+    case DISPLAY_ID_TITLE:
+        display_transition = DISPLAY_TRANSITION_ENABLE;
+        break;
+    case DISPLAY_ID_CLOCK:
+        display_transition = DISPLAY_TRANSITION_ENABLE;
+        break;
+    case DISPLAY_ID_CONTROLLER:
+        display_transition = DISPLAY_TRANSITION_ENABLE;
+        break;
+    case DISPLAY_ID_BLE:
+        display_transition = DISPLAY_TRANSITION_ENABLE;
+        break;
+    case DISPLAY_ID_PUZZLE:
+        display_transition = GetPuzzleDisplayTransitonEnable();
+        break;
+    default:
+        /* 処理なし */
+        break;
+    }
+    return display_transition;
+}
+
+/*
+ * Function: 画面スリープ許可取得
+ * Argument: 無し
+ * Return: 画面スリープ許可
+ * Note: 各画面の画面スリープ許可を取得
+ */
+display_sleep_enable_t getDisplaySleepEnable(void)
+{
+    display_sleep_enable_t display_sleep = DISPLAY_SLEEP_DISABLE;
+    switch (display_id) {
+    case DISPLAY_ID_TITLE:
+        display_sleep = DISPLAY_SLEEP_ENABLE;
+        break;
+    case DISPLAY_ID_CLOCK:
+        display_sleep = DISPLAY_SLEEP_ENABLE;
+        break;
+    case DISPLAY_ID_CONTROLLER:
+        display_sleep = DISPLAY_SLEEP_ENABLE;
+        break;
+    case DISPLAY_ID_BLE:
+        display_sleep = DISPLAY_SLEEP_DISABLE;
+        break;
+    case DISPLAY_ID_PUZZLE:
+        display_sleep = DISPLAY_SLEEP_DISABLE;
+        break;
+    default:
+        /* 処理なし */
+        break;
+    }
+    return display_sleep;
 }

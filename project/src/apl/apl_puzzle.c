@@ -14,6 +14,7 @@
 #include "mcal_adc.h"
 #include "lib_graphic.h"
 #include "stdlib.h"
+#include "apl_display.h"
 
 /********** Define **********/
 
@@ -242,6 +243,25 @@ static void drawHoldMinos(void);
 static void drawText(void);
 
 /********** Function **********/
+
+/*
+ * Function: パズル画面遷移許可取得
+ * Argument: なし
+ * Return  : 画面遷移許可
+ * Note    : なし
+ */
+display_transition_enable_t GetPuzzleDisplayTransitonEnable(void)
+{
+	display_transition_enable_t display_transition;
+
+	if (scene == SCENE_PLAY) {
+		display_transition = DISPLAY_TRANSITION_DISABLE;
+	} else {
+		display_transition = DISPLAY_TRANSITION_ENABLE;
+	}
+
+	return display_transition;
+}
 
 /*
  * Function: パズル表示初期化

@@ -10,6 +10,8 @@
 
 /********** Include **********/
 
+#include "apl_display.h"
+
 /********** Define **********/
 
 /********** Enum **********/
@@ -24,5 +26,6 @@
 
 void DrawPuzzleInit(void);
 void DrawPuzzle(void);
+display_transition_enable_t GetPuzzleDisplayTransitonEnable(void);
 
 #endif /* APL_PUZZLE_H_ */

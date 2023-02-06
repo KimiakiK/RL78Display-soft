@@ -16,6 +16,16 @@
 
 /********** Enum **********/
 
+typedef enum {
+	DISPLAY_TRANSITION_DISABLE = 0,
+	DISPLAY_TRANSITION_ENABLE
+} display_transition_enable_t;
+
+typedef enum {
+	DISPLAY_SLEEP_DISABLE = 0,
+	DISPLAY_SLEEP_ENABLE
+} display_sleep_enable_t;
+
 /********** Type **********/
 
 /********** Constant **********/
