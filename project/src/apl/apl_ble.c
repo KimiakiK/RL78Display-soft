@@ -12,6 +12,7 @@
 #include "drv_bm71.h"
 #include "drv_sw.h"
 #include "lib_font.h"
+#include "drv_tft.h"
 
 /********** Define **********/
 
@@ -37,6 +38,8 @@ static ble_state_t ble_state;
 static uint8_t text_pos_x;
 static uint8_t text_pos_y;
 
+static uint8_t prev_data;
+
 /********** Function Prototype **********/
 
 void transitionBleState(void);
@@ -56,6 +59,8 @@ void InitBle(void)
 
 	text_pos_x = 0;
 	text_pos_y = 0;
+
+	prev_data = 0;
 }
 
 /*
@@ -194,12 +199,16 @@ void transitionBleState(void)
  */
 void drawData(uint8_t data)
 {
-	if (data == '\n') {
+	uint8_t now_pos_y = text_pos_y;
+
+	if (data == '\r' || (prev_data != '\r' && data == '\n')) {
 		text_pos_x = 0;
 		text_pos_y++;
 	} else {
-		DrawAscii(data, text_pos_x * 10, text_pos_y * 20);
-		text_pos_x++;
+		if ((data >= 0x20) && data <= 0x7E) {
+			DrawAscii(data, text_pos_x * 10, text_pos_y * 20);
+			text_pos_x++;
+		}
 	}
 	if (text_pos_x >= 24) {
 		text_pos_x = 0;
@@ -208,4 +217,10 @@ void drawData(uint8_t data)
 	if (text_pos_y >= 12) {
 		text_pos_y = 0;
 	}
+
+	if (now_pos_y != text_pos_y) {
+		TftClearRect(0, text_pos_y * 20, TFT_WIDTH, 20);
+	}
+
+	prev_data = data;
 }
